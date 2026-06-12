@@ -81,7 +81,7 @@ nav.scrolled {
 }
 .hero-name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(3.2rem, 9vw, 8.5rem);
+  font-size: clamp(8rem, 15vw, 16rem);
   font-weight: 300; line-height: 0.95; margin-bottom: 1.2rem;
   opacity: 0; animation: fadeUp 1s 0.5s forwards;
 }
@@ -104,7 +104,7 @@ nav.scrolled {
   opacity: 0; animation: fadeUp 1s 1.3s forwards;
 }
 .scroll-line {
-  width: 1px; height: 44px;
+  width: 3px; height: 80px;
   background: linear-gradient(to bottom, var(--gold), transparent);
   animation: pulse 2s infinite;
 }
@@ -1127,7 +1127,7 @@ setInterval(() => {
     block: 'nearest'
   });
 
-}, 1000);
+}, 3000);
 
 
 // ─── OVERLAYS ─────────────────────────────────────────────
@@ -1192,12 +1192,12 @@ const photos = [
   {
     file: 'cohabitat.jpg',
     title: 'Coexistence',
-    loc: 'Melbourne, Australia'
+    loc: 'Chitwan, Nepal'
   },
   {
     file: 'wildlife.jpg',
-    title: 'Street Symphony',
-    loc: 'Melbourne, Australia'
+    title: 'Jungle Symphony',
+    loc: 'Chitwan, Nepal'
   },
   {
     file: 'freedom.jpg',
