@@ -1186,7 +1186,7 @@ const photos = [
   },
   {
     file: 'bird.jpg',
-    title: 'Urban Survival',
+    title: 'Lovebirds',
     loc: 'Melbourne, Australia'
   },
   {
