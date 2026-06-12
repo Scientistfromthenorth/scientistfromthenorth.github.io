@@ -959,13 +959,13 @@ No longer turning to one — being one…</p>
             <span class="si">✉</span><span class="sn">Email</span><span class="sh">sagar.bhatta1996@gmail.com</span>
           </a>
           <a class="slink" href="https://www.linkedin.com/in/sagar-bhatta-1ab177140" target="_blank" rel="noopener">
-            <span class="si">in</span><span class="sn">LinkedIn</span><span class="sh">/in/sagarbhatta</span>
+            <span class="si">in</span><span class="sn">LinkedIn</span><span class="sh">/in/sagar-bhatta-1ab177140</span>
           </a>
           <a class="slink" href="https://scholar.google.com/citations?user=sagarbhatta" target="_blank" rel="noopener">
             <span class="si">◈</span><span class="sn">Google Scholar</span><span class="sh">Sagar Bhatta</span>
           </a>
           <a class="slink" href="https://www.researchgate.net/profile/Sagar-Bhatta-4" target="_blank" rel="noopener">
-            <span class="si">R</span><span class="sn">ResearchGate</span><span class="sh">B_SAGAR</span>
+            <span class="si">R</span><span class="sn">ResearchGate</span><span class="sh">Sagar-Bhatta-4</span>
           </a>
           <a class="slink" href="https://www.instagram.com/scientist_fromthenorth" target="_blank" rel="noopener">
             <span class="si">◎</span><span class="sn">Instagram</span><span class="sh">@scientist_fromthenorth</span>
