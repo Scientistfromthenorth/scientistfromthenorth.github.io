@@ -75,7 +75,7 @@ nav.scrolled {
   padding: 80px 10vw 3rem;
 }
 .hero-eyebrow {
-  font-size: 0.68rem; letter-spacing: 0.3em; color: var(--gold);
+  font-size: 2rem; letter-spacing: 0.5em; color: var(--gold);
   text-transform: uppercase; margin-bottom: 1.6rem;
   opacity: 0; animation: fadeUp 1s 0.3s forwards;
 }
@@ -88,12 +88,12 @@ nav.scrolled {
 .hero-name em { font-style: italic; color: var(--gold); }
 .hero-roles {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(0.95rem, 2.2vw, 1.4rem);
+  font-size: clamp(3rem, 7vw, 6rem);
   font-style: italic; color: var(--slate); margin-bottom: 2rem;
   opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
 .hero-statement {
-  max-width: 500px; font-size: 0.93rem; line-height: 1.85;
+  max-width: 500px; font-size: 2rem; line-height: 2.5;
   color: var(--text-dim); font-weight: 300;
   opacity: 0; animation: fadeUp 1s 0.9s forwards;
 }
