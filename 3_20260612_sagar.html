@@ -116,9 +116,19 @@ nav.scrolled {
   color: var(--slate); text-transform: uppercase; margin-bottom: 2.5rem;
 }
 .cards-track {
-  display: flex; gap: 1.4rem; padding: 1.2rem 8vw;
-  overflow-x: auto; scroll-snap-type: x mandatory;
-  scrollbar-width: none; cursor: grab; -webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: 1.4rem;
+  padding: 1.2rem 8vw;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.cards-track::-webkit-scrollbar {
+  display: none;
 }
 .cards-track:active { cursor: grabbing; }
 .cards-track::-webkit-scrollbar { display: none; }
@@ -283,7 +293,11 @@ nav.scrolled {
   position: relative; overflow: hidden; cursor: pointer;
   border: 1px solid var(--glass-border);
 }
-.ph svg { width: 100%; display: block; }
+.ph img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .ph-info {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(13,13,18,0.88) 0%, transparent 55%);
@@ -944,13 +958,13 @@ No longer turning to one — being one…</p>
           <a class="slink" href="mailto:sagar.bhatta1996@gmail.com">
             <span class="si">✉</span><span class="sn">Email</span><span class="sh">sagar.bhatta1996@gmail.com</span>
           </a>
-          <a class="slink" href="https://www.linkedin.com/in/sagarbhatta" target="_blank" rel="noopener">
+          <a class="slink" href="https://www.linkedin.com/in/sagar-bhatta-1ab177140" target="_blank" rel="noopener">
             <span class="si">in</span><span class="sn">LinkedIn</span><span class="sh">/in/sagarbhatta</span>
           </a>
           <a class="slink" href="https://scholar.google.com/citations?user=sagarbhatta" target="_blank" rel="noopener">
             <span class="si">◈</span><span class="sn">Google Scholar</span><span class="sh">Sagar Bhatta</span>
           </a>
-          <a class="slink" href="https://www.researchgate.net/profile/B_SAGAR" target="_blank" rel="noopener">
+          <a class="slink" href="https://www.researchgate.net/profile/Sagar-Bhatta-4" target="_blank" rel="noopener">
             <span class="si">R</span><span class="sn">ResearchGate</span><span class="sh">B_SAGAR</span>
           </a>
           <a class="slink" href="https://www.instagram.com/scientist_fromthenorth" target="_blank" rel="noopener">
@@ -1065,26 +1079,59 @@ themeBtn.addEventListener('click', () => {
   }
 });
 
-// ─── NAV SCROLL — passive listener for performance ────────────────────────
-const navEl = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  navEl.classList.toggle('scrolled', scrollY > 50);
-}, { passive: true });
-
-// ─── DRAG SCROLL ──────────────────────────────────────────────────────────
+// ─── DRAG SCROLL ──────────────────────────────────────────
 const track = document.getElementById('track');
-let drag = false, sx = 0, sl = 0;
-track.addEventListener('mousedown', e => { drag = true; sx = e.pageX - track.offsetLeft; sl = track.scrollLeft; });
-window.addEventListener('mouseup',  () => drag = false);
-track.addEventListener('mousemove', e => {
-  if (!drag) return;
-  e.preventDefault();
-  track.scrollLeft = sl - (e.pageX - track.offsetLeft - sx);
+
+let drag = false;
+let sx = 0;
+let sl = 0;
+
+track.addEventListener('mousedown', e => {
+  drag = true;
+
+  sx = e.pageX - track.offsetLeft;
+  sl = track.scrollLeft;
 });
 
-// ─── OVERLAYS ─────────────────────────────────────────────────────────────
-let active = null;
+window.addEventListener('mouseup', () => {
+  drag = false;
+});
 
+track.addEventListener('mousemove', e => {
+  if (!drag) return;
+
+  e.preventDefault();
+
+  track.scrollLeft =
+    sl - (e.pageX - track.offsetLeft - sx);
+});
+
+
+// ─── AUTO SLIDESHOW ───────────────────────────────────────
+
+let currentCard = 0;
+
+setInterval(() => {
+
+  const cards = document.querySelectorAll('.card');
+
+  currentCard++;
+
+  if (currentCard >= cards.length) {
+    currentCard = 0;
+  }
+
+  cards[currentCard].scrollIntoView({
+    behavior: 'smooth',
+    inline: 'center',
+    block: 'nearest'
+  });
+
+}, 1000);
+
+
+// ─── OVERLAYS ─────────────────────────────────────────────
+let active = null;
 document.querySelectorAll('.card').forEach(c => {
   c.addEventListener('click', () => {
     const ov = document.getElementById(c.dataset.ov);
@@ -1125,38 +1172,61 @@ document.querySelectorAll('.filter-row').forEach(g => {
   });
 });
 
-// ─── GENERATE SVG PHOTOS ──────────────────────────────────────────────────
+// ─── GENERATE JPG PHOTOS ──────────────────────────────────────────────────
 const photos = [
-  { title: 'Tokyo, Midnight',   loc: 'Tokyo, Japan',         aspect: 1.4,  bg: ['#0a0a14','#1a1530'], accent: '#4a6fa5', label: 'STREET'    },
-  { title: 'Mountain Light',    loc: 'Dolomites, Italy',      aspect: 0.75, bg: ['#1a2535','#2d4060'], accent: '#c9a84c', label: 'LANDSCAPE' },
-  { title: 'Stillness',         loc: 'Serengeti, Tanzania',   aspect: 1.2,  bg: ['#1a150a','#3d2e10'], accent: '#9cb89c', label: 'WILDLIFE'  },
-  { title: 'The Commute',       loc: 'New York, USA',         aspect: 1.5,  bg: ['#12121a','#1e1e2e'], accent: '#8a8fa8', label: 'STREET'    },
-  { title: 'Above the Clouds',  loc: 'Swiss Alps',            aspect: 0.8,  bg: ['#0d1a2a','#1a3050'], accent: '#7bc4b8', label: 'LANDSCAPE' },
-  { title: 'Geometry',          loc: 'Hong Kong',             aspect: 1.3,  bg: ['#0a0a10','#1a1020'], accent: '#a888c4', label: 'URBAN'     },
+  {
+    file: 'images/coexistence.jpg',
+    title: 'Coexistence',
+    loc: 'Melbourne, Australia'
+  },
+  {
+    file: 'images/street.jpg',
+    title: 'Street Symphony',
+    loc: 'Melbourne, Australia'
+  },
+  {
+    file: 'images/bird.jpg',
+    title: 'Urban Survival',
+    loc: 'Melbourne, Australia'
+  },
+  {
+    file: 'images/cohabitat.jpg',
+    title: 'Coexistence',
+    loc: 'Melbourne, Australia'
+  },
+  {
+    file: 'images/wildlife.jpg',
+    title: 'Street Symphony',
+    loc: 'Melbourne, Australia'
+  },
+  {
+    file: 'images/freedom.jpg',
+    title: 'Urban Survival',
+    loc: 'Melbourne, Australia'
+  }
 ];
 
 const masonry = document.getElementById('photo-masonry');
-photos.forEach((p, i) => {
-  const h = Math.round(200 / p.aspect);
-  const svg = `<svg viewBox="0 0 200 ${h}" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="pg${i}" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="${p.bg[0]}"/>
-        <stop offset="100%" stop-color="${p.bg[1]}"/>
-      </linearGradient>
-    </defs>
-    <rect width="200" height="${h}" fill="url(#pg${i})"/>
-    <circle cx="${60 + i * 18}" cy="${h * 0.35}" r="${h * 0.18}" fill="${p.accent}" opacity=".12"/>
-    <circle cx="${150 - i * 10}" cy="${h * 0.65}" r="${h * 0.12}" fill="${p.accent}" opacity=".08"/>
-    <line x1="20" y1="${h * 0.5}" x2="180" y2="${h * 0.5}" stroke="${p.accent}" stroke-width=".5" opacity=".2"/>
-    <text x="100" y="${h * 0.5}" text-anchor="middle" dominant-baseline="middle"
-      font-family="Georgia,serif" font-size="11" fill="${p.accent}" opacity=".5" font-style="italic">${p.label}</text>
-  </svg>`;
+
+photos.forEach(p => {
+
   const div = document.createElement('div');
+
   div.className = 'ph';
-  div.innerHTML = svg + `<div class="ph-info" style="color:#F0EDE6"><span class="ph-name">${p.title}</span><span class="ph-loc">📍 ${p.loc}</span></div>`;
-  div.addEventListener('click', () => openLightbox(p, svg));
+
+  div.innerHTML = `
+    <img src="${p.file}" alt="${p.title}">
+
+    <div class="ph-info">
+      <div>
+        <span class="ph-name">${p.title}</span>
+        <span class="ph-loc">📍 ${p.loc}</span>
+      </div>
+    </div>
+  `;
+
   masonry.appendChild(div);
+
 });
 
 // ─── GENERATE SVG ARTWORKS ────────────────────────────────────────────────
