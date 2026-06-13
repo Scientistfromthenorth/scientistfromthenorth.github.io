@@ -77,13 +77,13 @@ nav.scrolled {
   padding: 30px 3vw 0.5rem;
 }
 .hero-eyebrow {
-  font-size: 1rem; letter-spacing: 0.3em; color: var(--gold);
+  font-size: 0.5rem; letter-spacing: 0.3em; color: var(--gold);
   text-transform: uppercase; margin-bottom: 1.6rem;
   opacity: 0; animation: fadeUp 1s 0.3s forwards;
 }
 .hero-name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(8rem, 6vw, 8rem);
+  font-size: clamp(10rem, 6vw, 8rem);
   font-weight: 500; line-height: 0.95; margin-bottom: 1.2rem;
   opacity: 0; animation: fadeUp 1s 0.5s forwards;
 }
@@ -767,10 +767,10 @@ nav.scrolled {
       <div>
         <span class="label">Selected Works</span>
         <ul class="poem-list" id="poem-list">
-          <li class="on" data-p="0"><strong>DEAD SUNFLOWERS</strong><span>Series · 2026</span></li>
-          <li data-p="1"><strong>LADY AND THE ROOSTER</strong><span>Lyric essay · 2023</span></li>
-          <li data-p="2"><strong>GIRL'S PORTRAIT IN RED</strong><span>Sonnet · 2023</span></li>
-          <li data-p="3"><strong>LAKHEY: THE DEMIGOD</strong><span>Sequence · 2022</span></li>
+          <li class="on" data-p="0"><strong>DEAD SUNFLOWERS</strong><span>English series · 2026</span></li>
+          <li data-p="1"><strong>Memories of You</strong><span>Spanish series · 2023</span></li>
+          <li data-p="2"><strong>Una Vez Mas</strong><span>Spanies series · 2023</span></li>
+          <li data-p="3"><strong>पाउन मन छ तिमीलाई</strong><span>Nepali series · 2024</span></li>
         </ul>
       </div>
       <div>
@@ -1066,6 +1066,7 @@ const photos = [
   { file:'bird.jpg',          title:'Lovebirds',         loc:'Melbourne, Australia' },
   { file:'cohabitat.jpg',     title:'Coexistence',       loc:'Chitwan, Nepal' },
   { file:'wildlife.jpg',      title:'Jungle Symphony',   loc:'Chitwan, Nepal' },
+  { file:'holy.jpg',      title:'Under the holy light',   loc:'Brisbane, Australia' },
   { file:'freedom.jpg',       title:'Urban Survival',    loc:'Melbourne, Australia' },
   { files:['lizard1.jpg','lizard2.jpg','lizard3.jpg'],
                               title:'City Crawlers',     loc:'Brisbane, Australia' },
@@ -1361,7 +1362,7 @@ setInterval(()=>{
     aboutIndex=(aboutIndex+1)%aboutImages.length;
     img.src=aboutImages[aboutIndex];
     img.style.opacity='1';
-  },500);   // wait for fade-out before swapping src
+  },1000);   // wait for fade-out before swapping src
 },6000);
 
 // ─── CONTACT FORM ─────────────────────────────────────────
