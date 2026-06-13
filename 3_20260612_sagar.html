@@ -1127,7 +1127,7 @@ setInterval(() => {
     block: 'nearest'
   });
 
-}, 5000);
+}, 8000);
 
 
 // ─── OVERLAYS ─────────────────────────────────────────────
@@ -1370,6 +1370,20 @@ document.getElementById('send-btn').addEventListener('click', () => {
   }
   // Replace with your real form endpoint (e.g. Formspree, Netlify Forms) as needed
   alert(`Message received — thank you, ${name}. I'll be in touch soon.`);
+});
+// ─── AUTO INTRO SCROLL ─────────────────────────────
+
+window.addEventListener('load', () => {
+
+  setTimeout(() => {
+
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+
+  }, 4000);
+
 });
 </script>
 </body>
