@@ -63,7 +63,7 @@ nav.scrolled {
 /* FIX: theme toggle was 15×15px — restored to 38×38px */
 .theme-toggle {
   background: none; border: 1px solid var(--glass-border);
-  color: var(--text-dim); width: 38px; height: 38px; border-radius: 50%;
+  color: var(--text-dim); width: 50px; height: 50px; border-radius: 50%;
   cursor: pointer; font-size: 1rem; display: flex; align-items: center;
   justify-content: center; transition: border-color 0.3s, color 0.3s;
 }
