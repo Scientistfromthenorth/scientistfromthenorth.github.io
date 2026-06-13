@@ -59,9 +59,11 @@ nav.scrolled {
   color: var(--text); text-decoration: none;
 }
 .nav-logo span { color: var(--gold); }
+
+/* FIX: theme toggle was 15×15px — restored to 38×38px */
 .theme-toggle {
   background: none; border: 1px solid var(--glass-border);
-  color: var(--text-dim); width: 15px; height: 15px; border-radius: 50%;
+  color: var(--text-dim); width: 38px; height: 38px; border-radius: 50%;
   cursor: pointer; font-size: 1rem; display: flex; align-items: center;
   justify-content: center; transition: border-color 0.3s, color 0.3s;
 }
@@ -72,23 +74,24 @@ nav.scrolled {
   position: relative; z-index: 1; min-height: 100vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: flex-start;
-  padding: 30px 3vw 0.5rem;
+  padding: 80px 10vw 3rem;
 }
 .hero-eyebrow {
-  font-size: 0.5rem; letter-spacing: 0.3em; color: var(--gold);
+  font-size: 0.68rem; letter-spacing: 0.3em; color: var(--gold);
   text-transform: uppercase; margin-bottom: 1.6rem;
   opacity: 0; animation: fadeUp 1s 0.3s forwards;
 }
+/* FIX: clamp was (10rem, 9vw, 8rem) — min was bigger than max, reversed */
 .hero-name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(10rem, 9vw, 8rem);
-  font-weight: 800; line-height: 0.95; margin-bottom: 1.2rem;
+  font-size: clamp(3.5rem, 9vw, 8.5rem);
+  font-weight: 300; line-height: 0.95; margin-bottom: 1.2rem;
   opacity: 0; animation: fadeUp 1s 0.5s forwards;
 }
 .hero-name em { font-style: italic; color: var(--gold); }
 .hero-roles {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(6rem, 4vw, 4rem);
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
   font-style: italic; color: var(--slate); margin-bottom: 2rem;
   opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
@@ -104,7 +107,7 @@ nav.scrolled {
   opacity: 0; animation: fadeUp 1s 1.3s forwards;
 }
 .scroll-line {
-  width: 3px; height: 80px;
+  width: 1px; height: 48px;
   background: linear-gradient(to bottom, var(--gold), transparent);
   animation: pulse 2s infinite;
 }
@@ -116,19 +119,9 @@ nav.scrolled {
   color: var(--slate); text-transform: uppercase; margin-bottom: 2.5rem;
 }
 .cards-track {
-  display: flex;
-  gap: 1.4rem;
-  padding: 1.2rem 8vw;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  cursor: grab;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-.cards-track::-webkit-scrollbar {
-  display: none;
+  display: flex; gap: 1.4rem; padding: 1.2rem 8vw;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; cursor: grab; -webkit-overflow-scrolling: touch;
 }
 .cards-track:active { cursor: grabbing; }
 .cards-track::-webkit-scrollbar { display: none; }
@@ -159,8 +152,7 @@ nav.scrolled {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 15rem; font-weight: 600; line-height: 1;
   color: var(--gold); opacity: 0.07; pointer-events: none;
-  transform: rotate(-5deg);
-  transition: opacity 0.4s, transform 0.4s;
+  transform: rotate(-5deg); transition: opacity 0.4s, transform 0.4s;
 }
 .card:hover .card-glyph { opacity: 0.14; transform: rotate(-3deg) scale(1.05); }
 .card-grad {
@@ -172,8 +164,7 @@ nav.scrolled {
   width: 34px; height: 34px; border-radius: 50%;
   border: 1px solid var(--glass-border);
   display: flex; align-items: center; justify-content: center;
-  color: var(--text-dim); font-size: 0.85rem;
-  transition: all 0.3s;
+  color: var(--text-dim); font-size: 0.85rem; transition: all 0.3s;
 }
 .card:hover .card-arrow {
   background: var(--gold); border-color: var(--gold);
@@ -221,12 +212,9 @@ nav.scrolled {
 .ov-sub { font-size: 0.88rem; color: var(--text-dim); max-width: 540px; line-height: 1.8; font-weight: 300; }
 .ov-body { padding: 4rem 10vw; }
 
-/* SHARED COMPONENTS */
+/* SHARED */
 .divider { width: 40px; height: 1px; background: var(--gold); margin: 2rem 0; }
-.label {
-  font-size: 0.62rem; letter-spacing: 0.3em; color: var(--slate);
-  text-transform: uppercase; margin-bottom: 1.4rem; display: block;
-}
+.label { font-size: 0.62rem; letter-spacing: 0.3em; color: var(--slate); text-transform: uppercase; margin-bottom: 1.4rem; display: block; }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 0.6rem;
   padding: 0.75rem 1.7rem; border: 1px solid var(--gold);
@@ -254,10 +242,7 @@ nav.scrolled {
 }
 .block-p { font-size: 0.86rem; line-height: 1.85; color: var(--text-dim); font-weight: 300; }
 .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; list-style: none; }
-.tags li {
-  font-size: 0.7rem; padding: 0.3rem 0.8rem;
-  border: 1px solid var(--glass-border); color: var(--text-dim); letter-spacing: 0.06em;
-}
+.tags li { font-size: 0.7rem; padding: 0.3rem 0.8rem; border: 1px solid var(--glass-border); color: var(--text-dim); letter-spacing: 0.06em; }
 .timeline { border-left: 1px solid var(--glass-border); padding-left: 2rem; }
 .tl { position: relative; margin-bottom: 2.4rem; }
 .tl::before {
@@ -266,17 +251,12 @@ nav.scrolled {
   background: var(--gold); border: 2px solid var(--bg);
 }
 .tl-year { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.25rem; }
-.tl-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.08rem; margin-bottom: 0.35rem;
-}
+.tl-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.08rem; margin-bottom: 0.35rem; }
 .tl-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.72; font-weight: 300; }
 
-/* PUBS — FIX: contained inside ov-body */
-.pub {
-  border: 1px solid var(--glass-border); padding: 1.7rem; margin-bottom: 0.9rem;
-  transition: border-color 0.3s, background 0.3s;
-}
+/* PUBS */
+.pub { border: 1px solid var(--glass-border); padding: 1.7rem; margin-bottom: 0.9rem; transition: border-color 0.3s, background 0.3s; }
+.pub:hover { border-color: rgba(201,168,76,0.4); background: var(--glass); }
 .pub-j { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.45rem; }
 .pub-t { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.18rem; margin-bottom: 0.35rem; line-height: 1.3; }
 .pub-a { font-size: 0.76rem; color: var(--text-dim); font-style: italic; margin-bottom: 0.75rem; }
@@ -284,30 +264,56 @@ nav.scrolled {
 .pub-doi { color: var(--gold); text-decoration: none; font-size: 0.7rem; }
 .pub-doi:hover { text-decoration: underline; }
 
-/* PHOTO MASONRY */
+/* ── PHOTOGRAPHY — FIX ──────────────────────────────────────────────────────
+   Images now display correctly:
+   · <img> has object-fit:cover so portrait/landscape all fill the cell nicely
+   · Height is constrained per-item so masonry columns balance
+   · The hover info overlay sits on top via position:absolute
+   · No external dependencies — just your local filenames
+   ─────────────────────────────────────────────────────────────────────────── */
 .masonry { columns: 3; column-gap: 0.75rem; }
 @media(max-width:880px){ .masonry { columns: 2; } }
 @media(max-width:500px){ .masonry { columns: 1; } }
+
 .ph {
   break-inside: avoid; margin-bottom: 0.75rem;
   position: relative; overflow: hidden; cursor: pointer;
   border: 1px solid var(--glass-border);
+  /* Ensure the container has a defined size for the overlay */
+  display: block;
 }
+
+/* The actual image — fills the container, consistent crop */
 .ph img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.55s cubic-bezier(.25,.8,.25,1), filter 0.4s;
+  filter: brightness(0.92) saturate(0.88);
 }
+.ph:hover img {
+  transform: scale(1.06);
+  filter: brightness(1) saturate(1.05);
+}
+
+/* Overlay: gradient + text — position:absolute over the image */
 .ph-info {
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background: linear-gradient(to top, rgba(13,13,18,0.88) 0%, transparent 55%);
-  opacity: 0; transition: opacity 0.4s;
-  display: flex; align-items: flex-end; padding: 1.1rem;
+  opacity: 0;
+  transition: opacity 0.4s;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.1rem;
+  /* Makes sure it sits on top of the image */
+  z-index: 1;
 }
 .ph:hover .ph-info { opacity: 1; }
 .ph-name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 0.95rem; font-weight: 400; display: block; margin-bottom: 0.15rem;
+  font-size: 0.95rem; font-weight: 400; display: block;
+  margin-bottom: 0.15rem; color: #F0EDE6;
 }
 .ph-loc { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.1em; }
 
@@ -318,27 +324,31 @@ nav.scrolled {
   transition: border-color 0.4s, transform 0.4s;
 }
 .art-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+
+/* ── ART IMAGES — FIX ───────────────────────────────────────────────────────
+   · aspect-ratio 3/4 gives consistent portrait frame for all paintings
+   · object-fit:cover fills it without distortion
+   · overflow:hidden on .art-card clips the zoom on hover
+   ─────────────────────────────────────────────────────────────────────────── */
 .art-image {
   width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, filter 0.4s;
+  filter: saturate(0.85);
 }
+.art-card:hover .art-image { transform: scale(1.04); filter: saturate(1); }
 
-.art-card:hover .art-image {
-  transform: scale(1.04);
-}
 .art-label { padding: 1.1rem; border-top: 1px solid var(--glass-border); }
 .art-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; margin-bottom: 0.25rem; }
 .art-meta { font-size: 0.7rem; color: var(--text-dim); }
 
-/* WRITING — FIX: poem display panel added */
+/* WRITING */
 .write-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; }
 @media(max-width:720px){ .write-grid { grid-template-columns: 1fr; } }
 .poem-list { list-style: none; }
-.poem-list li {
-  padding: 0.85rem 1rem; border-bottom: 1px solid var(--glass-border);
-  cursor: pointer; transition: background 0.2s;
-}
+.poem-list li { padding: 0.85rem 1rem; border-bottom: 1px solid var(--glass-border); cursor: pointer; transition: background 0.2s; }
 .poem-list li:hover, .poem-list li.on { background: var(--glass); color: var(--gold); }
 .poem-list li strong { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.98rem; font-weight: 400; }
 .poem-list li span { font-size: 0.68rem; color: var(--slate); letter-spacing: 0.07em; }
@@ -353,10 +363,7 @@ nav.scrolled {
 
 /* PROJECTS */
 .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.4rem; }
-.proj {
-  border: 1px solid var(--glass-border); padding: 1.9rem;
-  transition: border-color 0.3s, background 0.3s, transform 0.3s; cursor: pointer;
-}
+.proj { border: 1px solid var(--glass-border); padding: 1.9rem; transition: border-color 0.3s, background 0.3s, transform 0.3s; cursor: pointer; }
 .proj:hover { border-color: rgba(201,168,76,0.35); background: var(--glass); transform: translateY(-4px); }
 .proj-tag { font-size: 0.6rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.65rem; }
 .proj-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; margin-bottom: 0.65rem; }
@@ -364,56 +371,61 @@ nav.scrolled {
 .pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .pill { font-size: 0.63rem; padding: 0.22rem 0.6rem; border: 1px solid var(--glass-border); color: var(--slate); }
 .proj-links { display: flex; gap: 1rem; margin-top: 1.1rem; }
-.plink {
-  font-size: 0.68rem; letter-spacing: 0.12em; color: var(--gold);
-  text-transform: uppercase; text-decoration: none;
-  border-bottom: 1px solid transparent; transition: border-color 0.3s;
-}
+.plink { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
 .plink:hover { border-color: var(--gold); }
 
-/* ABOUT */
+/* ── ABOUT — FIX ────────────────────────────────────────────────────────────
+   · Two-column layout: text left, sticky photo right
+   · Photo uses object-fit:cover in a fixed-aspect container
+   · Slideshow cross-fade uses CSS opacity transition
+   · Collapses to single column on mobile (photo moves above text)
+   ─────────────────────────────────────────────────────────────────────────── */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+@media(max-width:900px){
+  .about-layout { grid-template-columns: 1fr; }
+  .about-gallery { order: -1; position: static; }
+}
+
+.about-gallery {
+  position: sticky;
+  top: 5rem; /* clears the sticky ov-header */
+}
+
+/* Container that gives the photo a consistent shape */
+.about-photo-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 2px;
+  position: relative;
+}
+
+/* FIX: the <img> fills its container properly; opacity transition for slideshow */
+.about-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: opacity 0.5s ease;
+}
+
 .about-lead {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(1.25rem, 2.8vw, 1.95rem);
   font-weight: 300; line-height: 1.65; color: var(--text-dim);
   margin-bottom: 2.5rem; max-width: 800px;
 }
-/* ABOUT LAYOUT WITH PHOTO */
-
-.about-layout{
-  display:grid;
-  grid-template-columns:1.4fr 0.8fr;
-  gap:3rem;
-  align-items:start;
-}
-
-.about-gallery{
-  position:sticky;
-  top:2rem;
-}
-
-.about-gallery img{
-  width:100%;
-  display:block;
-  border-radius:12px;
-  border:1px solid var(--glass-border);
-  transition:opacity .6s ease;
-}
-
-@media(max-width:900px){
-
-  .about-layout{
-    grid-template-columns:1fr;
-  }
-
-  .about-gallery{
-    order:-1;
-    position:static;
-  }
-
-}
 .about-lead em { color: var(--text); font-style: italic; }
 .about-p { font-size: 0.88rem; line-height: 1.9; color: var(--text-dim); max-width: 660px; margin-bottom: 1.5rem; font-weight: 300; }
+
 .val-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .val { border: 1px solid var(--glass-border); padding: 1.4rem; }
 .val-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
@@ -461,15 +473,14 @@ nav.scrolled {
 .lightbox.open { opacity: 1; pointer-events: all; }
 .lb-close {
   position: absolute; top: 2rem; right: 2rem; font-size: 1.4rem;
-  color: var(--ivory-dim); cursor: pointer; background: none; border: none;
-  transition: color 0.3s;
+  color: var(--ivory-dim); cursor: pointer; background: none; border: none; transition: color 0.3s;
 }
 .lb-close:hover { color: var(--gold); }
 .lb-content {
-  max-width: 85vw; max-height: 82vh;
+  max-width: 85vw; max-height: 88vh;
   display: flex; flex-direction: column; align-items: center; gap: 1rem;
 }
-.lb-content svg { max-width: 100%; max-height: 72vh; }
+.lb-content img { max-width: 100%; max-height: 78vh; object-fit: contain; display: block; }
 .lb-meta { font-size: 0.78rem; color: var(--text-dim); text-align: center; }
 .lb-meta strong { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; color: var(--text); }
 
@@ -478,10 +489,7 @@ nav.scrolled {
   from { opacity: 0; transform: translateY(26px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes pulse {
-  0%,100% { opacity: 0.35; }
-  50%      { opacity: 1; }
-}
+@keyframes pulse { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
 
 /* RESPONSIVE */
 @media(max-width:580px){
@@ -501,9 +509,7 @@ nav.scrolled {
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="#">
-    <span>B.</span> Sagar
-  </a>
+  <a class="nav-logo" href="#"><span>B.</span> Sagar</a>
   <button class="theme-toggle" id="theme-btn">☾</button>
 </nav>
 
@@ -620,7 +626,6 @@ nav.scrolled {
       <div>
         <h3 class="block-h">Current Position</h3>
         <p class="block-p">PhD Student, Department of Biochemistry and Molecular Biology<br>BDI, Monash University<br><br>Vice-president at NOTDRS Student Association.</p>
-        <!-- FIX: btn-ghost as <a> so it can carry an href; replace # with real CV URL when ready -->
         <a class="btn-ghost" href="#" download>↓ Download CV</a>
       </div>
       <div>
@@ -660,7 +665,6 @@ nav.scrolled {
 </div>
 
 <!-- ===== OVERLAY: PUBLICATIONS ===== -->
-<!-- FIX: all .pub cards are now correctly nested inside .ov-body -->
 <div class="overlay" id="ov-pubs">
   <div class="ov-header">
     <button class="ov-back" data-close>← Back</button>
@@ -674,65 +678,41 @@ nav.scrolled {
   <div class="ov-body">
     <div class="filter-row">
       <button class="filt on">All</button>
-      <button class="filt">2026</button>
-      <button class="filt">2025</button>
-      <button class="filt">2024</button>
-      <button class="filt">2023</button>
-      <button class="filt">2022</button>
+      <button class="filt">2026</button><button class="filt">2025</button>
+      <button class="filt">2024</button><button class="filt">2023</button><button class="filt">2022</button>
     </div>
-
     <div class="pub">
       <p class="pub-j">bioRxiv · 2026</p>
       <h3 class="pub-t">Mechanobiological Specialization of Choroid Plexus Macrophages Defined by Titin Expression</h3>
       <p class="pub-a">Bhatta, S., DiStasio, M., Grzybowski, A., Ortiz, G.</p>
-      <div class="pub-m">
-        <span>Citations: n/a</span>
-        <a class="pub-doi" href="https://doi.org/10.64898/2026.01.20.700716" target="_blank" rel="noopener">DOI: 10.64898/2026.01.20.700716 ↗</a>
-      </div>
+      <div class="pub-m"><span>Citations: n/a</span><a class="pub-doi" href="https://doi.org/10.64898/2026.01.20.700716" target="_blank" rel="noopener">DOI: 10.64898/2026.01.20.700716 ↗</a></div>
     </div>
-
     <div class="pub">
       <p class="pub-j">Nature · 2025</p>
       <h3 class="pub-t">The subfornical organ is a nucleus for gut-derived T cells that regulate behaviour</h3>
       <p class="pub-a">Bhatta, S., Yoshida, T.M., Nguyen, M., Zhang, L. et al.</p>
-      <div class="pub-m">
-        <span>Citations: n/a</span>
-        <a class="pub-doi" href="https://doi.org/10.1038/s41586-025-09050-7" target="_blank" rel="noopener">DOI: 10.1038/s41586-025-09050-7 ↗</a>
-      </div>
+      <div class="pub-m"><span>Citations: n/a</span><a class="pub-doi" href="https://doi.org/10.1038/s41586-025-09050-7" target="_blank" rel="noopener">DOI: 10.1038/s41586-025-09050-7 ↗</a></div>
     </div>
-
     <div class="pub">
       <p class="pub-j">Science Advances · 2025</p>
       <h3 class="pub-t">SARS-CoV-2 induces Alzheimer's disease–related amyloid-β pathology in ex vivo human retinal explants and retinal organoids</h3>
       <p class="pub-a">Bhatta, S., Miller, S., Hafler, B.</p>
-      <div class="pub-m">
-        <span>Citations: n/a</span>
-        <a class="pub-doi" href="https://www.science.org/doi/10.1126/sciadv.ads5006" target="_blank" rel="noopener">DOI: 10.1126/sciadv.ads5006 ↗</a>
-      </div>
+      <div class="pub-m"><span>Citations: n/a</span><a class="pub-doi" href="https://www.science.org/doi/10.1126/sciadv.ads5006" target="_blank" rel="noopener">DOI: 10.1126/sciadv.ads5006 ↗</a></div>
     </div>
-
     <div class="pub">
       <p class="pub-j">Neuroglia · 2024</p>
       <h3 class="pub-t">R-Spondin 1 Suppresses Inflammatory Cytokine Production in Human Cortical Astrocytes</h3>
       <p class="pub-a">Bhatta, S., Miller, S., Hafler, B.</p>
-      <div class="pub-m">
-        <span>Citations: n/a</span>
-        <a class="pub-doi" href="https://doi.org/10.3390/neuroglia5040028" target="_blank" rel="noopener">DOI: 10.3390/neuroglia5040028 ↗</a>
-      </div>
+      <div class="pub-m"><span>Citations: n/a</span><a class="pub-doi" href="https://doi.org/10.3390/neuroglia5040028" target="_blank" rel="noopener">DOI: 10.3390/neuroglia5040028 ↗</a></div>
     </div>
-
     <div class="pub">
       <p class="pub-j">Frontiers in Microbiology · 2022</p>
       <h3 class="pub-t">Persistent viral infections and their role in heart disease</h3>
       <p class="pub-a">Bhatta, S., Kloc, A.</p>
-      <div class="pub-m">
-        <span>Citations: n/a</span>
-        <a class="pub-doi" href="https://doi.org/10.3389/fmicb.2022.1030440" target="_blank" rel="noopener">DOI: 10.3389/fmicb.2022.1030440 ↗</a>
-      </div>
+      <div class="pub-m"><span>Citations: n/a</span><a class="pub-doi" href="https://doi.org/10.3389/fmicb.2022.1030440" target="_blank" rel="noopener">DOI: 10.3389/fmicb.2022.1030440 ↗</a></div>
     </div>
-
-  </div><!-- end .ov-body -->
-</div><!-- end #ov-pubs -->
+  </div>
+</div>
 
 <!-- ===== OVERLAY: PHOTOGRAPHY ===== -->
 <div class="overlay" id="ov-photo">
@@ -748,14 +728,11 @@ nav.scrolled {
   <div class="ov-body">
     <div class="filter-row">
       <button class="filt on">All</button>
-      <button class="filt">Street</button>
-      <button class="filt">Wildlife</button>
-      <button class="filt">Landscape</button>
-      <button class="filt">Travel</button>
+      <button class="filt">Street</button><button class="filt">Wildlife</button>
+      <button class="filt">Landscape</button><button class="filt">Travel</button>
     </div>
-    <div class="masonry" id="photo-masonry">
-      <!-- Populated by JS -->
-    </div>
+    <!-- FIX: masonry populated by JS with flat filenames (no images/ prefix) -->
+    <div class="masonry" id="photo-masonry"></div>
   </div>
 </div>
 
@@ -771,14 +748,12 @@ nav.scrolled {
     <p class="ov-sub">The beauty already in the equations.</p>
   </div>
   <div class="ov-body">
-    <div class="art-grid" id="art-grid">
-      <!-- Populated by JS -->
-    </div>
+    <!-- FIX: art grid populated by JS with flat filenames (no images/ prefix) -->
+    <div class="art-grid" id="art-grid"></div>
   </div>
 </div>
 
 <!-- ===== OVERLAY: WRITING ===== -->
-<!-- FIX: poem display panel restored; all divs properly closed -->
 <div class="overlay" id="ov-writing">
   <div class="ov-header">
     <button class="ov-back" data-close>← Back</button>
@@ -791,29 +766,15 @@ nav.scrolled {
   </div>
   <div class="ov-body">
     <div class="write-grid">
-      <!-- Left: poem list -->
       <div>
         <span class="label">Selected Works</span>
         <ul class="poem-list" id="poem-list">
-          <li class="on" data-p="0">
-            <strong>DEAD SUNFLOWERS</strong>
-            <span>Series · 2026</span>
-          </li>
-          <li data-p="1">
-            <strong>LADY AND THE ROOSTER</strong>
-            <span>Lyric essay · 2023</span>
-          </li>
-          <li data-p="2">
-            <strong>GIRL'S PORTRAIT IN RED</strong>
-            <span>Sonnet · 2023</span>
-          </li>
-          <li data-p="3">
-            <strong>LAKHEY:THE DEMIGOD</strong>
-            <span>Sequence · 2022</span>
-          </li>
+          <li class="on" data-p="0"><strong>DEAD SUNFLOWERS</strong><span>Series · 2026</span></li>
+          <li data-p="1"><strong>LADY AND THE ROOSTER</strong><span>Lyric essay · 2023</span></li>
+          <li data-p="2"><strong>GIRL'S PORTRAIT IN RED</strong><span>Sonnet · 2023</span></li>
+          <li data-p="3"><strong>LAKHEY: THE DEMIGOD</strong><span>Sequence · 2022</span></li>
         </ul>
       </div>
-      <!-- Right: poem display — FIX: this entire panel was missing -->
       <div>
         <div class="poem-box">
           <h2 id="pt">Dead Sunflowers</h2>
@@ -851,12 +812,11 @@ Like star-light,
 No longer turning to one — being one…</p>
         </div>
       </div>
-    </div><!-- end .write-grid -->
-  </div><!-- end .ov-body -->
-</div><!-- end #ov-writing -->
+    </div>
+  </div>
+</div>
 
 <!-- ===== OVERLAY: PROJECTS ===== -->
-<!-- FIX: this entire overlay was missing from the original -->
 <div class="overlay" id="ov-projects">
   <div class="ov-header">
     <button class="ov-back" data-close>← Back</button>
@@ -869,65 +829,37 @@ No longer turning to one — being one…</p>
   </div>
   <div class="ov-body">
     <div class="proj-grid">
-
       <div class="proj">
         <p class="proj-tag">Computational Biology</p>
         <h3 class="proj-title">ImmunoPepMap</h3>
         <p class="proj-desc">A pipeline for high-throughput immunopeptidomics data analysis — integrating mass spectrometry outputs with MHC-binding prediction models to identify novel antigen candidates in autoimmune contexts.</p>
-        <div class="pills">
-          <span class="pill">Python</span><span class="pill">NetMHCpan</span>
-          <span class="pill">Pandas</span><span class="pill">Snakemake</span>
-        </div>
-        <div class="proj-links">
-          <a class="plink" href="#" target="_blank" rel="noopener">GitHub ↗</a>
-          <a class="plink" href="#" target="_blank" rel="noopener">Preprint ↗</a>
-        </div>
+        <div class="pills"><span class="pill">Python</span><span class="pill">NetMHCpan</span><span class="pill">Pandas</span><span class="pill">Snakemake</span></div>
+        <div class="proj-links"><a class="plink" href="#" target="_blank">GitHub ↗</a><a class="plink" href="#" target="_blank">Preprint ↗</a></div>
       </div>
-
       <div class="proj">
         <p class="proj-tag">Art × Science</p>
         <h3 class="proj-title">Lady and the Rooster</h3>
-        <p class="proj-desc">An interesting piece of art- acrylic on canvas, where a lady is carrying a rooster with love, compassion and authority.....emotions reveal the true intension.</p>
-        <div class="pills">
-          <span class="pill">p5.js</span><span class="pill">WebGL</span>
-          <span class="pill">Three.js</span>
-        </div>
-        <div class="proj-links">
-          <a class="plink" href="#" target="_blank" rel="noopener">Live Demo ↗</a>
-          <a class="plink" href="#" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
+        <p class="proj-desc">An interesting piece of art — acrylic on canvas, where a lady is carrying a rooster with love, compassion and authority. Emotions reveal the true intention.</p>
+        <div class="pills"><span class="pill">p5.js</span><span class="pill">WebGL</span><span class="pill">Three.js</span></div>
+        <div class="proj-links"><a class="plink" href="#" target="_blank">Live Demo ↗</a><a class="plink" href="#" target="_blank">GitHub ↗</a></div>
       </div>
-
       <div class="proj">
         <p class="proj-tag">Neuroinflammation</p>
         <h3 class="proj-title">ChP-Seq Browser</h3>
         <p class="proj-desc">A lightweight browser for visualising single-cell RNA-seq data from choroid plexus macrophage populations, built to accompany the Titin expression paper.</p>
-        <div class="pills">
-          <span class="pill">R / Seurat</span><span class="pill">Shiny</span>
-          <span class="pill">UMAP</span>
-        </div>
-        <div class="proj-links">
-          <a class="plink" href="#" target="_blank" rel="noopener">App ↗</a>
-          <a class="plink" href="#" target="_blank" rel="noopener">Data ↗</a>
-        </div>
+        <div class="pills"><span class="pill">R / Seurat</span><span class="pill">Shiny</span><span class="pill">UMAP</span></div>
+        <div class="proj-links"><a class="plink" href="#" target="_blank">App ↗</a><a class="plink" href="#" target="_blank">Data ↗</a></div>
       </div>
-
       <div class="proj">
         <p class="proj-tag">Photography</p>
         <h3 class="proj-title">Light Journals</h3>
         <p class="proj-desc">An ongoing self-published zine series pairing field photography with short scientific observations — the same subject seen through a lens and through a microscope.</p>
-        <div class="pills">
-          <span class="pill">Print</span><span class="pill">Risograph</span>
-          <span class="pill">Self-published</span>
-        </div>
-        <div class="proj-links">
-          <a class="plink" href="#" target="_blank" rel="noopener">Vol. 1 PDF ↗</a>
-        </div>
+        <div class="pills"><span class="pill">Print</span><span class="pill">Risograph</span><span class="pill">Self-published</span></div>
+        <div class="proj-links"><a class="plink" href="#" target="_blank">Vol. 1 PDF ↗</a></div>
       </div>
-
-    </div><!-- end .proj-grid -->
-  </div><!-- end .ov-body -->
-</div><!-- end #ov-projects -->
+    </div>
+  </div>
+</div>
 
 <!-- ===== OVERLAY: ABOUT ===== -->
 <div class="overlay" id="ov-about">
@@ -940,47 +872,34 @@ No longer turning to one — being one…</p>
     <h1 class="ov-title">About<br><em>Me</em></h1>
   </div>
   <div class="ov-body">
-  <div class="about-layout">
-  <div class="about-text">
-    <p class="about-lead">I began my research journey with a strong interest in understanding the pathological mechanisms underlying complex human diseases, particularly those driven by <em>immune dysregulation and chronic inflammation</em>. With an academic foundation in medical biochemistry and advanced training in cellular and molecular biology, I was drawn to fundamental questions surrounding immune signalling, tissue-specific responses, and disease progression.</p>
-    <p class="about-p">During my research training, including my work at Yale University, I investigated immune trafficking and neuroinflammatory responses using state-of-the-art spatial and single-cell multi-omics approaches. Engaging with interdisciplinary platforms such as spatial transcriptomics and high-dimensional data analysis allowed me to explore how immune cells interact with tissue microenvironments in disease contexts.</p>
-    <p class="about-p">Through leading and contributing to multiple collaborative projects, I developed strong wet-lab expertise alongside computational proficiency, and gained the ability to integrate molecular, cellular, and systems-level data to generate biologically meaningful insights. To further extend my research toward mechanistic and translational immunobiology, I joined my current PhD programme in Australia, where my work focuses on autoimmune biology and immunopeptidomics.</p>
 
-  </div>
+    <!-- FIX: two-column layout with sticky photo panel on the right -->
+    <div class="about-layout">
 
-  <div class="about-gallery">
+      <!-- Left: text -->
+      <div class="about-text">
+        <p class="about-lead">I began my research journey with a strong interest in understanding the pathological mechanisms underlying complex human diseases, particularly those driven by <em>immune dysregulation and chronic inflammation</em>.</p>
+        <p class="about-p">During my research training, including my work at Yale University, I investigated immune trafficking and neuroinflammatory responses using state-of-the-art spatial and single-cell multi-omics approaches. Engaging with interdisciplinary platforms such as spatial transcriptomics and high-dimensional data analysis allowed me to explore how immune cells interact with tissue microenvironments in disease contexts.</p>
+        <p class="about-p">Through leading and contributing to multiple collaborative projects, I developed strong wet-lab expertise alongside computational proficiency, and gained the ability to integrate molecular, cellular, and systems-level data to generate biologically meaningful insights. To further extend my research toward mechanistic and translational immunobiology, I joined my current PhD programme in Australia, where my work focuses on autoimmune biology and immunopeptidomics.</p>
+      </div>
 
-    <img id="about-photo"
-         src="sagar1.png"
-         alt="Sagar Bhatta">
+      <!-- Right: photo slideshow -->
+      <!-- FIX: wrapped in .about-photo-wrap so object-fit:cover applies correctly -->
+      <div class="about-gallery">
+        <div class="about-photo-wrap">
+          <img id="about-photo" src="sagar1.png" alt="Sagar Bhatta">
+        </div>
+      </div>
 
-  </div>
+    </div>
 
-</div>
-    
     <div class="divider"></div>
     <span class="label">Values</span>
     <div class="val-grid">
-      <div class="val">
-        <div class="val-icon">◈</div>
-        <h3 class="val-title">Rigour</h3>
-        <p class="val-text">Beautiful ideas that cannot survive scrutiny are only decorative. I hold my own work to the same standard I apply to others'.</p>
-      </div>
-      <div class="val">
-        <div class="val-icon">◇</div>
-        <h3 class="val-title">Curiosity</h3>
-        <p class="val-text">The most interesting questions are always one field to the left of wherever I am standing. I try to stay uncomfortable.</p>
-      </div>
-      <div class="val">
-        <div class="val-icon">◉</div>
-        <h3 class="val-title">Openness</h3>
-        <p class="val-text">Science belongs to everyone.</p>
-      </div>
-      <div class="val">
-        <div class="val-icon">✦</div>
-        <h3 class="val-title">Craft</h3>
-        <p class="val-text">Whether the medium is science, paint, or photography — the quality of attention you bring to the work is visible in the result.</p>
-      </div>
+      <div class="val"><div class="val-icon">◈</div><h3 class="val-title">Rigour</h3><p class="val-text">Beautiful ideas that cannot survive scrutiny are only decorative. I hold my own work to the same standard I apply to others'.</p></div>
+      <div class="val"><div class="val-icon">◇</div><h3 class="val-title">Curiosity</h3><p class="val-text">The most interesting questions are always one field to the left of wherever I am standing. I try to stay uncomfortable.</p></div>
+      <div class="val"><div class="val-icon">◉</div><h3 class="val-title">Openness</h3><p class="val-text">Science belongs to everyone.</p></div>
+      <div class="val"><div class="val-icon">✦</div><h3 class="val-title">Craft</h3><p class="val-text">Whether the medium is science, paint, or photography — the quality of attention you bring to the work is visible in the result.</p></div>
     </div>
   </div>
 </div>
@@ -1011,24 +930,12 @@ No longer turning to one — being one…</p>
       <div>
         <span class="label">Find Me Online</span>
         <div class="slinks">
-          <a class="slink" href="mailto:sagar.bhatta1996@gmail.com">
-            <span class="si">✉</span><span class="sn">Email</span><span class="sh">sagar.bhatta1996@gmail.com</span>
-          </a>
-          <a class="slink" href="https://www.linkedin.com/in/sagar-bhatta-1ab177140" target="_blank" rel="noopener">
-            <span class="si">in</span><span class="sn">LinkedIn</span><span class="sh">/in/sagar-bhatta-1ab177140</span>
-          </a>
-          <a class="slink" href="https://scholar.google.com/citations?user=sagarbhatta" target="_blank" rel="noopener">
-            <span class="si">◈</span><span class="sn">Google Scholar</span><span class="sh">Sagar Bhatta</span>
-          </a>
-          <a class="slink" href="https://www.researchgate.net/profile/Sagar-Bhatta-4" target="_blank" rel="noopener">
-            <span class="si">R</span><span class="sn">ResearchGate</span><span class="sh">Sagar-Bhatta-4</span>
-          </a>
-          <a class="slink" href="https://www.instagram.com/scientist_fromthenorth" target="_blank" rel="noopener">
-            <span class="si">◎</span><span class="sn">Instagram</span><span class="sh">@scientist_fromthenorth</span>
-          </a>
-          <a class="slink" href="https://x.com/vfovendetta" target="_blank" rel="noopener">
-            <span class="si">✕</span><span class="sn">X / Twitter</span><span class="sh">@vfovendetta</span>
-          </a>
+          <a class="slink" href="mailto:sagar.bhatta1996@gmail.com"><span class="si">✉</span><span class="sn">Email</span><span class="sh">sagar.bhatta1996@gmail.com</span></a>
+          <a class="slink" href="https://www.linkedin.com/in/sagar-bhatta-1ab177140" target="_blank" rel="noopener"><span class="si">in</span><span class="sn">LinkedIn</span><span class="sh">/in/sagar-bhatta-1ab177140</span></a>
+          <a class="slink" href="https://scholar.google.com/citations?user=sagarbhatta" target="_blank" rel="noopener"><span class="si">◈</span><span class="sn">Google Scholar</span><span class="sh">Sagar Bhatta</span></a>
+          <a class="slink" href="https://www.researchgate.net/profile/Sagar-Bhatta-4" target="_blank" rel="noopener"><span class="si">R</span><span class="sn">ResearchGate</span><span class="sh">Sagar-Bhatta-4</span></a>
+          <a class="slink" href="https://www.instagram.com/scientist_fromthenorth" target="_blank" rel="noopener"><span class="si">◎</span><span class="sn">Instagram</span><span class="sh">@scientist_fromthenorth</span></a>
+          <a class="slink" href="https://x.com/vfovendetta" target="_blank" rel="noopener"><span class="si">✕</span><span class="sn">X / Twitter</span><span class="sh">@vfovendetta</span></a>
         </div>
       </div>
     </div>
@@ -1042,349 +949,201 @@ No longer turning to one — being one…</p>
 </div>
 
 <script>
-// ─── PARTICLES — optimised: spatial bucketing reduces comparisons ─────────
+// ─── PARTICLES ────────────────────────────────────────────
 const cvs = document.getElementById('particle-canvas');
 const cx = cvs.getContext('2d');
 const N = 55;
 let pts = [];
-
 function resizeCvs() { cvs.width = innerWidth; cvs.height = innerHeight; }
 resizeCvs();
 window.addEventListener('resize', resizeCvs, { passive: true });
-
 class Pt {
   constructor() { this.reset(); }
   reset() {
-    this.x  = Math.random() * cvs.width;
-    this.y  = Math.random() * cvs.height;
-    this.r  = Math.random() * 1.2 + 0.3;
-    this.vx = (Math.random() - 0.5) * 0.18;
-    this.vy = (Math.random() - 0.5) * 0.18;
-    this.life = Math.random();
-    this.d  = Math.random() * 0.005 + 0.002;
+    this.x = Math.random()*cvs.width; this.y = Math.random()*cvs.height;
+    this.r = Math.random()*1.2+0.3;
+    this.vx = (Math.random()-.5)*.18; this.vy = (Math.random()-.5)*.18;
+    this.life = Math.random(); this.d = Math.random()*.005+.002;
   }
   step() {
-    this.x += this.vx; this.y += this.vy; this.life += this.d;
-    if (this.life > 1 || this.x < 0 || this.x > cvs.width || this.y < 0 || this.y > cvs.height) this.reset();
+    this.x+=this.vx; this.y+=this.vy; this.life+=this.d;
+    if(this.life>1||this.x<0||this.x>cvs.width||this.y<0||this.y>cvs.height) this.reset();
   }
   draw(dark) {
-    const a = Math.sin(this.life * Math.PI) * 0.5;
-    cx.beginPath();
-    cx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    cx.fillStyle = dark ? `rgba(201,168,76,${a})` : `rgba(100,80,30,${a * 0.4})`;
+    const a = Math.sin(this.life*Math.PI)*.5;
+    cx.beginPath(); cx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    cx.fillStyle = dark?`rgba(201,168,76,${a})`:`rgba(100,80,30,${a*.4})`;
     cx.fill();
   }
 }
-
-for (let i = 0; i < N; i++) pts.push(new Pt());
-
-const LINK_DIST = 110;
-const LINK_DIST_SQ = LINK_DIST * LINK_DIST;
-
+for(let i=0;i<N;i++) pts.push(new Pt());
+const LD=110, LDSQ=LD*LD;
 function raf() {
-  cx.clearRect(0, 0, cvs.width, cvs.height);
-  const dark = document.documentElement.getAttribute('data-theme') !== 'light';
-
-  // Draw particles
-  pts.forEach(p => { p.step(); p.draw(dark); });
-
-  // Draw links — only check each pair once, skip by distance² first
-  for (let i = 0; i < pts.length; i++) {
-    for (let j = i + 1; j < pts.length; j++) {
-      const dx = pts[i].x - pts[j].x;
-      const dy = pts[i].y - pts[j].y;
-      const dSq = dx * dx + dy * dy;
-      if (dSq < LINK_DIST_SQ) {
-        const alpha = dark
-          ? 0.13 * (1 - Math.sqrt(dSq) / LINK_DIST)
-          : 0.07 * (1 - Math.sqrt(dSq) / LINK_DIST);
-        cx.beginPath();
-        cx.moveTo(pts[i].x, pts[i].y);
-        cx.lineTo(pts[j].x, pts[j].y);
-        cx.strokeStyle = dark ? `rgba(138,143,168,${alpha})` : `rgba(100,100,120,${alpha})`;
-        cx.lineWidth = 0.5;
-        cx.stroke();
-      }
+  cx.clearRect(0,0,cvs.width,cvs.height);
+  const dark = document.documentElement.getAttribute('data-theme')!=='light';
+  pts.forEach(p=>{p.step();p.draw(dark);});
+  for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
+    const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, dSq=dx*dx+dy*dy;
+    if(dSq<LDSQ){
+      const a=(dark?.13:.07)*(1-Math.sqrt(dSq)/LD);
+      cx.beginPath(); cx.moveTo(pts[i].x,pts[i].y); cx.lineTo(pts[j].x,pts[j].y);
+      cx.strokeStyle=dark?`rgba(138,143,168,${a})`:`rgba(100,100,120,${a})`;
+      cx.lineWidth=.5; cx.stroke();
     }
   }
   requestAnimationFrame(raf);
 }
 raf();
 
-// ─── THEME ────────────────────────────────────────────────────────────────
-const themeBtn = document.getElementById('theme-btn');
-themeBtn.addEventListener('click', () => {
-  const d = document.documentElement;
-  const t = d.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  d.setAttribute('data-theme', t);
-  themeBtn.textContent = t === 'dark' ? '☾' : '☀';
-  if (t === 'light') {
-    d.style.setProperty('--bg',           '#F5F2EC');
-    d.style.setProperty('--surface',      '#ECEAE3');
-    d.style.setProperty('--text',         '#0D0D12');
-    d.style.setProperty('--text-dim',     '#5A5855');
-    d.style.setProperty('--glass',        'rgba(0,0,0,0.03)');
-    d.style.setProperty('--glass-border', 'rgba(0,0,0,0.08)');
+// ─── THEME ────────────────────────────────────────────────
+document.getElementById('theme-btn').addEventListener('click',()=>{
+  const d=document.documentElement;
+  const t=d.getAttribute('data-theme')==='dark'?'light':'dark';
+  d.setAttribute('data-theme',t);
+  document.getElementById('theme-btn').textContent=t==='dark'?'☾':'☀';
+  if(t==='light'){
+    d.style.setProperty('--bg','#F5F2EC'); d.style.setProperty('--surface','#ECEAE3');
+    d.style.setProperty('--text','#0D0D12'); d.style.setProperty('--text-dim','#5A5855');
+    d.style.setProperty('--glass','rgba(0,0,0,0.03)'); d.style.setProperty('--glass-border','rgba(0,0,0,0.08)');
   } else {
-    d.style.setProperty('--bg',           '#0D0D12');
-    d.style.setProperty('--surface',      '#1A1A24');
-    d.style.setProperty('--text',         '#F0EDE6');
-    d.style.setProperty('--text-dim',     '#C8C4BC');
-    d.style.setProperty('--glass',        'rgba(255,255,255,0.04)');
-    d.style.setProperty('--glass-border', 'rgba(255,255,255,0.09)');
+    d.style.setProperty('--bg','#0D0D12'); d.style.setProperty('--surface','#1A1A24');
+    d.style.setProperty('--text','#F0EDE6'); d.style.setProperty('--text-dim','#C8C4BC');
+    d.style.setProperty('--glass','rgba(255,255,255,0.04)'); d.style.setProperty('--glass-border','rgba(255,255,255,0.09)');
   }
 });
+
+// ─── NAV SCROLL ───────────────────────────────────────────
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
 
 // ─── DRAG SCROLL ──────────────────────────────────────────
-const track = document.getElementById('track');
+const track=document.getElementById('track');
+let drag=false,sx=0,sl=0;
+track.addEventListener('mousedown',e=>{drag=true;sx=e.pageX-track.offsetLeft;sl=track.scrollLeft;});
+window.addEventListener('mouseup',()=>drag=false);
+track.addEventListener('mousemove',e=>{if(!drag)return;e.preventDefault();track.scrollLeft=sl-(e.pageX-track.offsetLeft-sx);});
 
-let drag = false;
-let sx = 0;
-let sl = 0;
-
-track.addEventListener('mousedown', e => {
-  drag = true;
-
-  sx = e.pageX - track.offsetLeft;
-  sl = track.scrollLeft;
-});
-
-window.addEventListener('mouseup', () => {
-  drag = false;
-});
-
-track.addEventListener('mousemove', e => {
-  if (!drag) return;
-
-  e.preventDefault();
-
-  track.scrollLeft =
-    sl - (e.pageX - track.offsetLeft - sx);
-});
-
-
-// ─── AUTO SLIDESHOW ───────────────────────────────────────
-
-let currentCard = 0;
-
-setInterval(() => {
-
-  const cards = document.querySelectorAll('.card');
-
-  currentCard++;
-
-  if (currentCard >= cards.length) {
-    currentCard = 0;
-  }
-
-  cards[currentCard].scrollIntoView({
-    behavior: 'smooth',
-    inline: 'center',
-    block: 'nearest'
-  });
-
-}, 5000);
-
+// ─── AUTO SLIDESHOW (cards) ───────────────────────────────
+let currentCard=0;
+setInterval(()=>{
+  const cards=document.querySelectorAll('.card');
+  currentCard=(currentCard+1)%cards.length;
+  cards[currentCard].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+},5000);
 
 // ─── OVERLAYS ─────────────────────────────────────────────
-let active = null;
-document.querySelectorAll('.card').forEach(c => {
-  c.addEventListener('click', () => {
-    const ov = document.getElementById(c.dataset.ov);
-    if (!ov) return;
-    ov.classList.add('open');
-    active = ov;
-    document.body.style.overflow = 'hidden';
-    ov.scrollTop = 0;
+let active=null;
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const ov=document.getElementById(c.dataset.ov);
+    if(!ov) return;
+    ov.classList.add('open'); active=ov;
+    document.body.style.overflow='hidden'; ov.scrollTop=0;
   });
 });
-
-document.querySelectorAll('[data-close]').forEach(b => {
-  b.addEventListener('click', () => {
-    if (active) {
-      active.classList.remove('open');
-      active = null;
-      document.body.style.overflow = '';
-    }
+document.querySelectorAll('[data-close]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(active){active.classList.remove('open');active=null;document.body.style.overflow='';}
   });
 });
-
-// Close overlay on Escape key
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && active) {
-    active.classList.remove('open');
-    active = null;
-    document.body.style.overflow = '';
-  }
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&active){active.classList.remove('open');active=null;document.body.style.overflow='';}
 });
 
-// ─── FILTERS ──────────────────────────────────────────────────────────────
-document.querySelectorAll('.filter-row').forEach(g => {
-  g.querySelectorAll('.filt').forEach(b => {
-    b.addEventListener('click', () => {
-      g.querySelectorAll('.filt').forEach(x => x.classList.remove('on'));
+// ─── FILTERS ──────────────────────────────────────────────
+document.querySelectorAll('.filter-row').forEach(g=>{
+  g.querySelectorAll('.filt').forEach(b=>{
+    b.addEventListener('click',()=>{
+      g.querySelectorAll('.filt').forEach(x=>x.classList.remove('on'));
       b.classList.add('on');
     });
   });
 });
 
-// ─── GENERATE JPG PHOTOS ──────────────────────────────────────────────────
+// ─── PHOTOGRAPHY ──────────────────────────────────────────
+// FIX: all paths are flat (no images/ prefix) — matches same-folder layout.
+// FIX: multi-image entries (lizard) now correctly use p.files[0] as the
+//      initial src, and the slideshow cycles through p.files, not p.file.
 const photos = [
-  {
-    file: 'coexistence.jpg',
-    title: 'Coexistence',
-    loc: 'Melbourne, Australia'
-  },
-  {
-    file: 'street.jpg',
-    title: 'Street Symphony',
-    loc: 'Melbourne, Australia'
-  },
-  {
-    file: 'bird.jpg',
-    title: 'Lovebirds',
-    loc: 'Melbourne, Australia'
-  },
-  {
-    file: 'cohabitat.jpg',
-    title: 'Coexistence',
-    loc: 'Chitwan, Nepal'
-  },
-  {
-    file: 'wildlife.jpg',
-    title: 'Jungle Symphony',
-    loc: 'Chitwan, Nepal'
-  },
-  {
-    file: 'freedom.jpg',
-    title: 'Urban Survival',
-    loc: 'Melbourne, Australia'
-  },
-  {
-  files: [
-    'lizard1.jpg',
-    'lizard2.jpg',
-    'lizard3.jpg'
-  ],
-  title: 'City Crawlers',
-  loc: 'Brisbane, Australia'
-  },
-  {
-    file: 'meiska.jpg',
-    title: 'Adorable',
-    loc: 'Melbourne, Australia'
-  }
+  { file:'coexistence.jpg',   title:'Coexistence',      loc:'Melbourne, Australia' },
+  { file:'street.jpg',        title:'Street Symphony',   loc:'Melbourne, Australia' },
+  { file:'bird.jpg',          title:'Lovebirds',         loc:'Melbourne, Australia' },
+  { file:'cohabitat.jpg',     title:'Coexistence',       loc:'Chitwan, Nepal' },
+  { file:'wildlife.jpg',      title:'Jungle Symphony',   loc:'Chitwan, Nepal' },
+  { file:'freedom.jpg',       title:'Urban Survival',    loc:'Melbourne, Australia' },
+  { files:['lizard1.jpg','lizard2.jpg','lizard3.jpg'],
+                              title:'City Crawlers',     loc:'Brisbane, Australia' },
+  { file:'meiska.jpg',        title:'Adorable',          loc:'Melbourne, Australia' },
 ];
 
-const masonry = document.getElementById('photo-masonry');
-
-photos.forEach(p => {
-
-  const div = document.createElement('div');
-
-  div.className = 'ph';
-
-  div.innerHTML = `
-  <img src="images/${p.file}" alt="${p.title}">
-
-  <div class="ph-info">
-    <div>
-      <span class="ph-name">${p.title}</span>
-      <span class="ph-loc">📍 ${p.loc}</span>
-    </div>
-  </div>
-`;
-
+const masonry=document.getElementById('photo-masonry');
+photos.forEach(p=>{
+  // FIX: use p.files[0] as initial src when it's a multi-image entry
+  const initialSrc = p.files ? p.files[0] : p.file;
+  const div=document.createElement('div');
+  div.className='ph';
+  div.innerHTML=`
+    <img src="${initialSrc}" alt="${p.title}" loading="lazy">
+    <div class="ph-info">
+      <div>
+        <span class="ph-name">${p.title}</span>
+        <span class="ph-loc">📍 ${p.loc}</span>
+      </div>
+    </div>`;
+  // Lightbox on click
+  div.addEventListener('click',()=>{
+    const src=div.querySelector('img').src;
+    document.getElementById('lb-content').innerHTML=
+      `<img src="${src}" alt="${p.title}">
+       <div class="lb-meta"><strong>${p.title}</strong><br>${p.loc}</div>`;
+    document.getElementById('lb').classList.add('open');
+  });
   masonry.appendChild(div);
-if (p.files && p.files.length > 1) {
 
-  const img = div.querySelector('img');
-
-  let current = 0;
-
-  setInterval(() => {
-
-    current = (current + 1) % p.files.length;
-
-    img.src = `images/${p.files[current]}`;
-
-  }, 2000);
-
-}
+  // FIX: cycle through p.files array properly
+  if(p.files && p.files.length>1){
+    const img=div.querySelector('img');
+    let cur=0;
+    setInterval(()=>{
+      cur=(cur+1)%p.files.length;
+      img.src=p.files[cur];  // flat filename — no images/ prefix
+    },2000);
+  }
 });
 
-// ─── GENERATE PNG ARTWORKS ────────────────────────────────────────────────
-const artworks = [
-  {
-    file: 'girl.png',
-    title: 'Girl Portrait Red',
-    meta: 'Acrylic on canvas · 90×120 cm · 2023'
-  },
-  {
-    file: 'lady-and-the-rooster.png',
-    title: 'Lady and the Rooster',
-    meta: 'Acrylic on canvas · 90×120 cm · 2022'
-  },
-  {
-    file: 'wounded.png',
-    title: 'Wounded Rhino',
-    meta: 'Mixed media · 100×100 cm · 2024'
-  },
-  {
-    file: 'lakhey.png',
-    title: 'LAKHEY-The Demigod',
-    meta: 'Acrylic on canvas · 60×80 cm · 2023'
-  }
+// ─── ART GRID ─────────────────────────────────────────────
+// FIX: flat filenames — no images/ prefix
+const artworks=[
+  { file:'girl.png',               title:'Girl Portrait Red',      meta:'Acrylic on canvas · 90×120 cm · 2023' },
+  { file:'lady-and-the-rooster.png',title:'Lady and the Rooster',  meta:'Acrylic on canvas · 90×120 cm · 2022' },
+  { file:'wounded.png',            title:'Wounded Rhino',          meta:'Mixed media · 100×100 cm · 2024' },
+  { file:'lakhey.png',             title:'LAKHEY – The Demigod',   meta:'Acrylic on canvas · 60×80 cm · 2023' },
 ];
-
-const artGrid = document.getElementById('art-grid');
-
-artworks.forEach(a => {
-
-  const card = document.createElement('div');
-
-  card.className = 'art-card';
-
-  card.innerHTML = `
-    <img src="${a.file}" alt="${a.title}" class="art-image">
-
+const artGrid=document.getElementById('art-grid');
+artworks.forEach(a=>{
+  const card=document.createElement('div');
+  card.className='art-card';
+  card.innerHTML=`
+    <img src="${a.file}" alt="${a.title}" class="art-image" loading="lazy">
     <div class="art-label">
       <h3 class="art-title">${a.title}</h3>
       <p class="art-meta">${a.meta}</p>
-    </div>
-  `;
-
-  card.addEventListener('click', () => {
-
-    openLightbox(
-      a,
-      `<img src="${a.file}" alt="${a.title}" style="max-width:100%">`
-    );
-
+    </div>`;
+  card.addEventListener('click',()=>{
+    document.getElementById('lb-content').innerHTML=
+      `<img src="${a.file}" alt="${a.title}">
+       <div class="lb-meta"><strong>${a.title}</strong><br>${a.meta}</div>`;
+    document.getElementById('lb').classList.add('open');
   });
-
   artGrid.appendChild(card);
-
 });
 
-// ─── LIGHTBOX ─────────────────────────────────────────────────────────────
-function openLightbox(item, svg) {
-  document.getElementById('lb-content').innerHTML =
-    svg + `<div class="lb-meta"><strong>${item.title}</strong><br>${item.meta || item.loc || ''}</div>`;
-  document.getElementById('lb').classList.add('open');
-}
-document.getElementById('lb-close').addEventListener('click', () =>
-  document.getElementById('lb').classList.remove('open'));
-document.getElementById('lb').addEventListener('click', e => {
-  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
-});
+// ─── LIGHTBOX CLOSE ───────────────────────────────────────
+document.getElementById('lb-close').addEventListener('click',()=>document.getElementById('lb').classList.remove('open'));
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open');});
 
-// ─── POEM READER — FIX: IDs pt / pd / pb now exist in the DOM ─────────────
-const poems = [
-  {
-    t: 'Dead Sunflowers',
-    d: 'Series · 2026',
-    b: `I.
+// ─── POEM READER ──────────────────────────────────────────
+const poems=[
+  { t:'Dead Sunflowers', d:'Series · 2026', b:`I.
 
 A dead sunflower is a dead flower
 Dead,
@@ -1414,77 +1173,45 @@ Omnipresent like gods do.
 Dead sunflowers are flowers in exile,
 Nebulous, universal,
 Like star-light,
-No longer turning to one — being one…`
-  },
-  {
-    t: 'Lady and the Rooster',
-    d: 'Acrylic Painting · 2023',
-    b: `[Full text to be added]`
-  },
-  {
-    t: 'Girl portrait red',
-    d: 'Acrylic Painting · 2023',
-    b: `[Full text to be added]`
-  },
-  {
-    t: 'Lakhey: The Demigod',
-    d: 'Acrylic Painting · 2022',
-    b: `[Full text to be added]`
-  },
+No longer turning to one — being one…` },
+  { t:'Lady and the Rooster', d:'Acrylic Painting · 2023', b:`[Full text to be added]` },
+  { t:'Girl Portrait Red',    d:'Acrylic Painting · 2023', b:`[Full text to be added]` },
+  { t:'Lakhey: The Demigod',  d:'Acrylic Painting · 2022', b:`[Full text to be added]` },
 ];
-
-document.getElementById('poem-list').querySelectorAll('li').forEach(li => {
-  li.addEventListener('click', () => {
-    document.querySelectorAll('#poem-list li').forEach(x => x.classList.remove('on'));
+document.getElementById('poem-list').querySelectorAll('li').forEach(li=>{
+  li.addEventListener('click',()=>{
+    document.querySelectorAll('#poem-list li').forEach(x=>x.classList.remove('on'));
     li.classList.add('on');
-    const p = poems[+li.dataset.p];
-    if (!p) return;
-    document.getElementById('pt').textContent = p.t;
-    document.getElementById('pd').textContent = p.d;
-    document.getElementById('pb').textContent = p.b;
+    const p=poems[+li.dataset.p]; if(!p) return;
+    document.getElementById('pt').textContent=p.t;
+    document.getElementById('pd').textContent=p.d;
+    document.getElementById('pb').textContent=p.b;
   });
 });
 
-// ─── CONTACT FORM — basic feedback on send ────────────────────────────────
-document.getElementById('send-btn').addEventListener('click', () => {
-  const name = document.querySelector('#ov-contact input[type="text"]').value.trim();
-  const email = document.querySelector('#ov-contact input[type="email"]').value.trim();
-  const msg   = document.querySelector('#ov-contact textarea').value.trim();
-  if (!name || !email || !msg) {
-    alert('Please fill in all fields before sending.');
-    return;
-  }
-  // Replace with your real form endpoint (e.g. Formspree, Netlify Forms) as needed
+// ─── ABOUT PHOTO SLIDESHOW ────────────────────────────────
+// FIX: flat filenames (sagar1.png not images/sagar1.png)
+const aboutImages=['sagar1.png','sagar2.png','sagar3.jpg'];
+let aboutIndex=0;
+setInterval(()=>{
+  const img=document.getElementById('about-photo');
+  if(!img) return;
+  img.style.opacity='0';
+  setTimeout(()=>{
+    aboutIndex=(aboutIndex+1)%aboutImages.length;
+    img.src=aboutImages[aboutIndex];
+    img.style.opacity='1';
+  },500);   // wait for fade-out before swapping src
+},3000);
+
+// ─── CONTACT FORM ─────────────────────────────────────────
+document.getElementById('send-btn').addEventListener('click',()=>{
+  const name=document.querySelector('#ov-contact input[type="text"]').value.trim();
+  const email=document.querySelector('#ov-contact input[type="email"]').value.trim();
+  const msg=document.querySelector('#ov-contact textarea').value.trim();
+  if(!name||!email||!msg){alert('Please fill in all fields before sending.');return;}
   alert(`Message received — thank you, ${name}. I'll be in touch soon.`);
 });
-const aboutImages = [
-  'sagar1.png',
-  'sagar2.png',
-  'sagar3.jpg'
-];
-
-let aboutIndex = 0;
-
-setInterval(() => {
-
-  const img = document.getElementById('about-photo');
-
-  if (!img) return;
-
-  img.style.opacity = '0';
-
-  setTimeout(() => {
-
-    aboutIndex =
-      (aboutIndex + 1) % aboutImages.length;
-
-    img.src = aboutImages[aboutIndex];
-
-    img.style.opacity = '1';
-
-  }, 300);
-
-}, 3000);
 </script>
 </body>
 </html>
