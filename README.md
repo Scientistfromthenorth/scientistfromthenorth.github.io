@@ -90,7 +90,7 @@ nav.scrolled {
 .hero-name em { font-style: italic; color: var(--gold); }
 .hero-roles {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1rem, 3vw, 3rem);
+  font-size: clamp(3rem, 6vw, 6rem);
   font-style: italic; color: var(--slate); margin-bottom: 2rem;
   opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
@@ -1113,6 +1113,9 @@ const artworks=[
   { file:'lady-and-the-rooster.png',title:'Lady and the Rooster',  meta:'Acrylic on canvas · 90×120 cm · 2022' },
   { file:'wounded.png',            title:'Wounded Rhino',          meta:'Mixed media · 100×100 cm · 2024' },
   { file:'lakhey.png',             title:'LAKHEY – The Demigod',   meta:'Acrylic on canvas · 60×80 cm · 2023' },
+  { file:'boy.jpg',                title:'Boy with an apple        meta:'Acrylic on canvas · 90×120 cm · 2022' },
+  { file:'cat.png',                title:'Cat: An experiment',     meta:'Mixed media · 100×100 cm · 2024' },
+  { file:'portrait.png',           title:'Portrait of a lady',     meta:'Acrylic on canvas · 60×80 cm · 2023' },
 ];
 const artGrid=document.getElementById('art-grid');
 artworks.forEach(a=>{
@@ -1170,9 +1173,172 @@ Dead sunflowers are flowers in exile,
 Nebulous, universal,
 Like star-light,
 No longer turning to one — being one…` },
-  { t:'Lady and the Rooster', d:'Acrylic Painting · 2023', b:`[Full text to be added]` },
-  { t:'Girl Portrait Red',    d:'Acrylic Painting · 2023', b:`[Full text to be added]` },
-  { t:'Lakhey: The Demigod',  d:'Acrylic Painting · 2022', b:`[Full text to be added]` },
+  { t:'Memories of you', d:'Series · 2023', b:`II.
+¡Te acuerdas, cuando estábamos empapados de lluvia esa noche!
+Do you remember that night when we were drenched by the rain?
+
+¿Recuerdas cómo se sintió?
+Do you remember how it felt?
+
+Nuestras palmas todavía estaban secas,
+Our palms were still dry,
+
+mientras nos tomamos de la mano para siempre.
+as we held each other’s hands forever.
+
+Hacía mucho frío afuera,
+It was freezing outside,
+
+Pero nosotros respiramos fuego.
+but we breathed fire.
+
+Te acuerdas,
+Do you remember,
+
+¿Cómo me quitaste el anteojo y lo secaste con tu vestido?
+how you took off my glasses and dried them with your dress?
+
+Te acuerdas,
+Do you remember,
+
+Cómo mi hermana encontró tu cabello en mi suéter.
+how my sister found your hair on my sweater.
+
+Tu acuerdas,
+Do you remember,
+
+Cómo me limpié las mejillas cada vez que me besaste.
+how I wiped my cheeks every time you kissed me?
+
+Es gracioso, pero te acuerdas,
+It’s funny, but do you remember,
+
+Cómo siempre revisaste mis bolsillos en busca de barras de chocolate.
+how you always checked my pockets for chocolate bars?
+
+porque siempre tengo algo para ti.
+because I always had something for you.
+
+ya no puedo recordar todo esto,
+I can no longer remember all of this.
+
+con cada día que pasa, tiendo a olvidar nuestros recuerdos.
+With every passing day, I find myself forgetting our memories.
+
+Olvidé que nos tomamos de la mano bajo la lluvia.
+I forget that we held hands in the rain.
+
+se me olvidan tus manchas de labial en mis mejillas.
+I forget the traces of your lipstick on my cheeks.
+
+He olvidado las noches que pasamos juntos.
+I forget the nights we spent together.
+
+Hay un sin fin de cosas sobre ti que quiero olvidar.
+There is an endless list of things about you that I want to forget.
+
+Hay millones de recuerdos de los que quiero deshacerme para siempre.
+There are millions of memories I wish I could erase forever.
+
+Y se que eso no es posible.
+And I know that isn’t possible.
+
+tus recuerdos estan empapados en mi alma,
+Your memories are soaked into my soul,
+
+Porque estas empapada en mi alma o eres mi alma.
+because you are soaked into my soul—or perhaps, you are my soul.
+
+Y un alma deja su cuerpo después de la muerte.
+And a soul leaves the body only after death.
+
+Así que supongo que estoy esperando ese mismo día.
+So I suppose I am waiting for that very day.
+
+Cuando tus recuerdos me dejan para
+when your memories finally leave me too.` },
+  { t:'Una Vez Mas',    d:'July · 2023', b:`III.
+sabes que tomaré tu mano,
+si no para siempre, por el camino que caminamos juntos.
+Por el breve tiempo que pasamos juntos.
+abrázalos más fuerte en tu dolor y penas,
+mantenerte cerca en la felicidad y más cerca en la consternación.
+Te perseguiré como un niño de 7 años,
+si no hasta que tengamos 77.
+.
+.
+Se que no estas seguro,
+tu pasado ha sido injusto contigo.
+porque dios te mantuvo lejos de mi por tanto tiempo,
+así que supongo que él también es injusto conmigo.
+pero como los ríos siempre terminan en el mar para siempre,
+estábamos destinados a encontrarnos.
+reunirse para nunca partir.
+reunirse para disolverse y unirse para siempre.
+se encuentran como dos nubes,
+chocar y llover como uno.
+encontrarse como dos viajeros que buscan la paz,
+para finalmente encontrar la paz dentro de cada uno.` },
+  { t:'पाउन मन छ तिमीलाई',  d:'July · 2024', b:`IV.
+Pauna manxa timilai
+Tara gumauna lai hoina sangalna lai
+Tesaile ta kehi vaneko chuina ajai
+Maanko kura maanmai xaan;
+Kholeko chuina ajai.
+Pauna manxa timilai, gumauna lai hoina sangalna lai.
+पाउन मन छ तिमीलाई
+तर गुमाउनलाई होइन, संगाल्न |
+त्यसैले त केहि भनेको छुइन अझै |
+मनको कुरा मनमै छन्,
+खोलेको छुइन अझै |
+किनकी, मलाई पाउन मन छ तिमीलाई,
+गुमाउनलाई होइन, संगाल्न |
+Jhareka taralai vane mero maanko kura
+Parela ma fukera pani udaye kati manakamana
+Kalpani gare hami satha vayeko ched,
+Eutai samaya feri feri bitaune prayas gare, dherai patak.
+Tara vyakta garina yo maanko vawana timilai
+Kinaki malai pauna maanxa timilai
+Gumauna lai hoina sangalna lai…
+झरेका तारालाई भनेँ मेरो मनको कुरा |
+परेलामा पनि फुकेर उडाएँ कति मनकामना |
+कल्पना पनि गरेँ हामी साथ भएको छेँड |
+एउटै समय फेरी-फेरी बिताउने प्रयास गरेँ,
+धेरै पटक......
+तर व्यक्त गरिन यो मनको भावना तिमीलाई |
+किनकी, पाउन मन छ तिमीलाई,
+गुमाउनलाई होइन, संगाल्नलाई |
+Haata dinxau vane ma samauxu
+Satha khojxau, ma saghauxu.
+Sangai hidxu sadhai,
+Ananta samma lai.
+Tara vyata gardina yo maanka kura
+Kinaki malai pauna maanxa timilai
+Gumauna hoina sangalna.
+हात दिन्छौ भने म समाउँछु |
+साथ खोज्छौ, म सघाउँछु |
+सँगै हिड्छु सधैँ,
+अनन्त सम्म लाई...
+तर, व्यक्त गर्दिन यो मनका कुरा,
+किनकी, मलाई पाउन मन छ तिमीलाई,
+गुमाउनलाई होइन, संगाल्न |
+batasale udayera lyaeko timro sugandhama
+Ramauna maanxa sadhai
+Timilai angaleko kalpanma harauna maanxa sadhai
+Korera timro tasbir rang varnaxa
+Janera najanejhai kati kura garnaxa
+Jhuto bolerai vayeni yo maya lukaunuxa
+Kinaki
+Malai pauna maanxa timilai
+Gumauna hoina samgalna…
+बतासले उडाएर ल्याएको सुगन्धमा रमाउन मनछ सधैँ |
+तिमीलाई अँगालेको कल्पनामा हराउन मनछ अझै |
+कोरेर तिम्रो तस्बिर, रंग भर्नछ |
+जानेर नजानेझै कति कुरा गर्नछ |
+झूटो बोलेरै भएनि यो माया लुकाउनु छ |
+किनकी, मलाई पाउन मन छ तिमीलाई,
+गुमाउनलाई होइन, संगाल्न |
+गुमाउनलाई होइन, संगाल्न ||` },
 ];
 document.getElementById('poem-list').querySelectorAll('li').forEach(li=>{
   li.addEventListener('click',()=>{
