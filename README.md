@@ -1240,7 +1240,7 @@ photos.forEach(p => {
 const artworks = [
   {
     file: 'girl.ppg',
-    title: 'Fragrance',
+    title: 'Girl's Portrait Red',
     meta: 'Acrylic on canvas · 90×120 cm · 2023'
   },
   {
@@ -1250,12 +1250,12 @@ const artworks = [
   },
   {
     file: 'wounded.ppg',
-    title: 'Intertwined',
+    title: 'Wounded Rhino',
     meta: 'Mixed media · 100×100 cm · 2024'
   },
   {
     file: 'lakhey.ppg',
-    title: 'Celebration of Race',
+    title: 'LAKHEY- The Demigod',
     meta: 'Acrylic on canvas · 60×80 cm · 2023'
   }
 ];
@@ -1345,7 +1345,7 @@ No longer turning to one — being one…`
     b: `[Full text to be added]`
   },
   {
-    t: 'Girl's portrait in red',
+    t: 'Girl's portrait red',
     d: 'Acrylic Painting · 2023',
     b: `[Full text to be added]`
   },
