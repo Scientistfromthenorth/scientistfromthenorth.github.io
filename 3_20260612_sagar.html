@@ -83,14 +83,14 @@ nav.scrolled {
 }
 .hero-name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(6rem, 6vw, 8rem);
+  font-size: clamp(8rem, 6vw, 8rem);
   font-weight: 500; line-height: 0.95; margin-bottom: 1.2rem;
   opacity: 0; animation: fadeUp 1s 0.5s forwards;
 }
 .hero-name em { font-style: italic; color: var(--gold); }
 .hero-roles {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(3rem, 6vw, 6rem);
+  font-size: clamp(1rem, 3vw, 3rem);
   font-style: italic; color: var(--slate); margin-bottom: 2rem;
   opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
