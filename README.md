@@ -61,7 +61,7 @@ nav.scrolled {
 .nav-logo span { color: var(--gold); }
 .theme-toggle {
   background: none; border: 1px solid var(--glass-border);
-  color: var(--text-dim); width: 38px; height: 38px; border-radius: 50%;
+  color: var(--text-dim); width: 15px; height: 15px; border-radius: 50%;
   cursor: pointer; font-size: 1rem; display: flex; align-items: center;
   justify-content: center; transition: border-color 0.3s, color 0.3s;
 }
@@ -93,7 +93,7 @@ nav.scrolled {
   opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
 .hero-statement {
-  max-width: 100px; font-size: 2rem; line-height: 2.5;
+  max-width: 500px; font-size: 0.93rem; line-height: 1.85;
   color: var(--text-dim); font-weight: 300;
   opacity: 0; animation: fadeUp 1s 0.9s forwards;
 }
