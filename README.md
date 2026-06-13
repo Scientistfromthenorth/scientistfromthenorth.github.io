@@ -1107,13 +1107,12 @@ photos.forEach(p=>{
   }
 });
 // ─── ART GRID ─────────────────────────────────────────────
-// FIX: flat filenames — no images/ prefix
 const artworks=[
   { file:'girl.png',               title:'Girl Portrait Red',      meta:'Acrylic on canvas · 90×120 cm · 2023' },
   { file:'lady-and-the-rooster.png',title:'Lady and the Rooster',  meta:'Acrylic on canvas · 90×120 cm · 2022' },
   { file:'wounded.png',            title:'Wounded Rhino',          meta:'Mixed media · 100×100 cm · 2024' },
   { file:'lakhey.png',             title:'LAKHEY – The Demigod',   meta:'Acrylic on canvas · 60×80 cm · 2023' },
-  { file:'boy.jpg',                title:'Boy with an apple        meta:'Acrylic on canvas · 90×120 cm · 2022' },
+  { file:'boy.jpg',                title:'Boy with an apple',      meta:'Acrylic on canvas · 90×120 cm · 2022' },
   { file:'cat.png',                title:'Cat: An experiment',     meta:'Mixed media · 100×100 cm · 2024' },
   { file:'portrait.png',           title:'Portrait of a lady',     meta:'Acrylic on canvas · 60×80 cm · 2023' },
 ];
