@@ -1212,9 +1212,13 @@ const photos = [
     loc: 'Melbourne, Australia'
   },
   {
-    file: 'lizard1.jpg',
-    title: 'City Crawlers',
-    loc: 'Brisbane, Australia'
+  files: [
+    'lizard1.jpg',
+    'lizard2.jpg',
+    'lizard3.jpg'
+  ],
+  title: 'City Crawlers',
+  loc: 'Brisbane, Australia'
   },
   {
     file: 'meiska.jpg',
@@ -1232,18 +1236,32 @@ photos.forEach(p => {
   div.className = 'ph';
 
   div.innerHTML = `
-    <img src="${p.file}" alt="${p.title}">
+  <img src="images/${p.file}" alt="${p.title}">
 
-    <div class="ph-info">
-      <div>
-        <span class="ph-name">${p.title}</span>
-        <span class="ph-loc">📍 ${p.loc}</span>
-      </div>
+  <div class="ph-info">
+    <div>
+      <span class="ph-name">${p.title}</span>
+      <span class="ph-loc">📍 ${p.loc}</span>
     </div>
-  `;
+  </div>
+`;
 
   masonry.appendChild(div);
+if (p.files && p.files.length > 1) {
 
+  const img = div.querySelector('img');
+
+  let current = 0;
+
+  setInterval(() => {
+
+    current = (current + 1) % p.files.length;
+
+    img.src = `images/${p.files[current]}`;
+
+  }, 2000);
+
+}
 });
 
 // ─── GENERATE PNG ARTWORKS ────────────────────────────────────────────────
