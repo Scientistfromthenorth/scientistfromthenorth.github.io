@@ -318,8 +318,15 @@ nav.scrolled {
   transition: border-color 0.4s, transform 0.4s;
 }
 .art-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
-.art-card svg { width: 100%; display: block; transition: transform 0.5s; }
-.art-card:hover svg { transform: scale(1.04); }
+.art-image {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.art-card:hover .art-image {
+  transform: scale(1.04);
+}
 .art-label { padding: 1.1rem; border-top: 1px solid var(--glass-border); }
 .art-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; margin-bottom: 0.25rem; }
 .art-meta { font-size: 0.7rem; color: var(--text-dim); }
@@ -1127,7 +1134,7 @@ setInterval(() => {
     block: 'nearest'
   });
 
-}, 8000);
+}, 5000);
 
 
 // ─── OVERLAYS ─────────────────────────────────────────────
@@ -1229,56 +1236,58 @@ photos.forEach(p => {
 
 });
 
-// ─── GENERATE SVG ARTWORKS ────────────────────────────────────────────────
+// ─── GENERATE JPG ARTWORKS ────────────────────────────────────────────────
 const artworks = [
-  { title: 'Fragrance', meta: 'Acrylic on canvas · 90×120 cm · 2023',
-    bg: ['#1a0a0a','#3d1515'], accent: '#d4a0a0', shape: 'curve' },
-  { title: 'Lady and the Rosster',   meta: 'Acrylic on canvas · 90×120 cm · 2022',
-    bg: ['#0a1a1a','#153030'], accent: '#7bc4b8', shape: 'spiral' },
-  { title: 'Intertwined',        meta: 'Mixed media · 100×100 cm · 2024',
-    bg: ['#0d0a15','#1e1535'], accent: '#a888c4', shape: 'radial' },
-  { title: 'Celebration of Race', meta: 'Acrylic on canvas · 60×80 cm · 2023',
-    bg: ['#0a0d15','#151e35'], accent: '#7b9ec4', shape: 'branch' },
+  {
+    file: 'images/fragrance.jpg',
+    title: 'Fragrance',
+    meta: 'Acrylic on canvas · 90×120 cm · 2023'
+  },
+  {
+    file: 'images/lady-and-the-rooster.png',
+    title: 'Lady and the Rooster',
+    meta: 'Acrylic on canvas · 90×120 cm · 2022'
+  },
+  {
+    file: 'images/intertwined.jpg',
+    title: 'Intertwined',
+    meta: 'Mixed media · 100×100 cm · 2024'
+  },
+  {
+    file: 'images/celebration-of-race.jpg',
+    title: 'Celebration of Race',
+    meta: 'Acrylic on canvas · 60×80 cm · 2023'
+  }
 ];
 
 const artGrid = document.getElementById('art-grid');
-artworks.forEach((a, i) => {
-  let shapeEl = '';
-  if (a.shape === 'curve') {
-    shapeEl = `<path d="M30,120 Q80,40 120,100 Q160,160 190,80" fill="none" stroke="${a.accent}" stroke-width="1.5" opacity=".5"/>`;
-  } else if (a.shape === 'spiral') {
-    let d = 'M100,120';
-    for (let t = 0; t < 20; t++) { const r = t * 4, ang = t * 0.8; d += ` L${100 + r * Math.cos(ang)},${120 + r * Math.sin(ang)}`; }
-    shapeEl = `<path d="${d}" fill="none" stroke="${a.accent}" stroke-width="1" opacity=".5"/>`;
-  } else if (a.shape === 'radial') {
-    for (let k = 0; k < 8; k++) {
-      const ang = k * Math.PI / 4;
-      shapeEl += `<line x1="100" y1="100" x2="${100 + 70 * Math.cos(ang)}" y2="${100 + 70 * Math.sin(ang)}" stroke="${a.accent}" stroke-width=".8" opacity=".3"/>`;
-    }
-    shapeEl += `<circle cx="100" cy="100" r="30" fill="none" stroke="${a.accent}" stroke-width="1" opacity=".4"/>`;
-  } else if (a.shape === 'branch') {
-    shapeEl = `
-    <line x1="100" y1="190" x2="100" y2="100" stroke="${a.accent}" stroke-width="1.5" opacity=".5"/>
-    <line x1="100" y1="130" x2="65"  y2="70"  stroke="${a.accent}" stroke-width="1"   opacity=".4"/>
-    <line x1="100" y1="130" x2="135" y2="70"  stroke="${a.accent}" stroke-width="1"   opacity=".4"/>
-    <line x1="65"  y1="95"  x2="45"  y2="50"  stroke="${a.accent}" stroke-width=".7"  opacity=".3"/>
-    <line x1="135" y1="95"  x2="155" y2="50"  stroke="${a.accent}" stroke-width=".7"  opacity=".3"/>`;
-  }
-  const svg = `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-    <defs><linearGradient id="ag${i}" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="${a.bg[0]}"/><stop offset="100%" stop-color="${a.bg[1]}"/>
-    </linearGradient></defs>
-    <rect width="200" height="250" fill="url(#ag${i})"/>
-    <circle cx="100" cy="100" r="70" fill="${a.accent}" opacity=".06"/>
-    ${shapeEl}
-    <text x="100" y="225" text-anchor="middle" font-family="Georgia,serif" font-size="9"
-      fill="${a.accent}" opacity=".4" font-style="italic">${a.title}</text>
-  </svg>`;
+
+artworks.forEach(a => {
+
   const card = document.createElement('div');
+
   card.className = 'art-card';
-  card.innerHTML = svg + `<div class="art-label"><h3 class="art-title">${a.title}</h3><p class="art-meta">${a.meta}</p></div>`;
-  card.addEventListener('click', () => openLightbox(a, svg));
+
+  card.innerHTML = `
+    <img src="${a.file}" alt="${a.title}" class="art-image">
+
+    <div class="art-label">
+      <h3 class="art-title">${a.title}</h3>
+      <p class="art-meta">${a.meta}</p>
+    </div>
+  `;
+
+  card.addEventListener('click', () => {
+
+    openLightbox(
+      a,
+      `<img src="${a.file}" alt="${a.title}" style="max-width:100%">`
+    );
+
+  });
+
   artGrid.appendChild(card);
+
 });
 
 // ─── LIGHTBOX ─────────────────────────────────────────────────────────────
