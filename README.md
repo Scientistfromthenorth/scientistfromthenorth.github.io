@@ -75,20 +75,20 @@ nav.scrolled {
   padding: 30px 3vw 0.5rem;
 }
 .hero-eyebrow {
-  font-size: 1rem; letter-spacing: 0.3em; color: var(--gold);
+  font-size: 0.5rem; letter-spacing: 0.3em; color: var(--gold);
   text-transform: uppercase; margin-bottom: 1.6rem;
   opacity: 0; animation: fadeUp 1s 0.3s forwards;
 }
 .hero-name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(6rem, 6vw, 8rem);
-  font-weight: 500; line-height: 0.95; margin-bottom: 1.2rem;
+  font-size: clamp(10rem, 9vw, 8rem);
+  font-weight: 800; line-height: 0.95; margin-bottom: 1.2rem;
   opacity: 0; animation: fadeUp 1s 0.5s forwards;
 }
 .hero-name em { font-style: italic; color: var(--gold); }
 .hero-roles {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1rem, 3vw, 3rem);
+  font-size: clamp(6rem, 4vw, 4rem);
   font-style: italic; color: var(--slate); margin-bottom: 2rem;
   opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
@@ -377,6 +377,40 @@ nav.scrolled {
   font-size: clamp(1.25rem, 2.8vw, 1.95rem);
   font-weight: 300; line-height: 1.65; color: var(--text-dim);
   margin-bottom: 2.5rem; max-width: 800px;
+}
+/* ABOUT LAYOUT WITH PHOTO */
+
+.about-layout{
+  display:grid;
+  grid-template-columns:1.4fr 0.8fr;
+  gap:3rem;
+  align-items:start;
+}
+
+.about-gallery{
+  position:sticky;
+  top:2rem;
+}
+
+.about-gallery img{
+  width:100%;
+  display:block;
+  border-radius:12px;
+  border:1px solid var(--glass-border);
+  transition:opacity .6s ease;
+}
+
+@media(max-width:900px){
+
+  .about-layout{
+    grid-template-columns:1fr;
+  }
+
+  .about-gallery{
+    order:-1;
+    position:static;
+  }
+
 }
 .about-lead em { color: var(--text); font-style: italic; }
 .about-p { font-size: 0.88rem; line-height: 1.9; color: var(--text-dim); max-width: 660px; margin-bottom: 1.5rem; font-weight: 300; }
@@ -906,9 +940,24 @@ No longer turning to one — being one…</p>
     <h1 class="ov-title">About<br><em>Me</em></h1>
   </div>
   <div class="ov-body">
+  <div class="about-layout">
+  <div class="about-text">
     <p class="about-lead">I began my research journey with a strong interest in understanding the pathological mechanisms underlying complex human diseases, particularly those driven by <em>immune dysregulation and chronic inflammation</em>. With an academic foundation in medical biochemistry and advanced training in cellular and molecular biology, I was drawn to fundamental questions surrounding immune signalling, tissue-specific responses, and disease progression.</p>
     <p class="about-p">During my research training, including my work at Yale University, I investigated immune trafficking and neuroinflammatory responses using state-of-the-art spatial and single-cell multi-omics approaches. Engaging with interdisciplinary platforms such as spatial transcriptomics and high-dimensional data analysis allowed me to explore how immune cells interact with tissue microenvironments in disease contexts.</p>
     <p class="about-p">Through leading and contributing to multiple collaborative projects, I developed strong wet-lab expertise alongside computational proficiency, and gained the ability to integrate molecular, cellular, and systems-level data to generate biologically meaningful insights. To further extend my research toward mechanistic and translational immunobiology, I joined my current PhD programme in Australia, where my work focuses on autoimmune biology and immunopeptidomics.</p>
+
+  </div>
+
+  <div class="about-gallery">
+
+    <img id="about-photo"
+         src="sagar1.png"
+         alt="Sagar Bhatta">
+
+  </div>
+
+</div>
+    
     <div class="divider"></div>
     <span class="label">Values</span>
     <div class="val-grid">
@@ -1212,9 +1261,13 @@ const photos = [
     loc: 'Melbourne, Australia'
   },
   {
-    file: 'lizard1.jpg',
-    title: 'City Crawlers',
-    loc: 'Brisbane, Australia'
+  files: [
+    'lizard1.jpg',
+    'lizard2.jpg',
+    'lizard3.jpg'
+  ],
+  title: 'City Crawlers',
+  loc: 'Brisbane, Australia'
   },
   {
     file: 'meiska.jpg',
@@ -1232,18 +1285,32 @@ photos.forEach(p => {
   div.className = 'ph';
 
   div.innerHTML = `
-    <img src="${p.file}" alt="${p.title}">
+  <img src="images/${p.file}" alt="${p.title}">
 
-    <div class="ph-info">
-      <div>
-        <span class="ph-name">${p.title}</span>
-        <span class="ph-loc">📍 ${p.loc}</span>
-      </div>
+  <div class="ph-info">
+    <div>
+      <span class="ph-name">${p.title}</span>
+      <span class="ph-loc">📍 ${p.loc}</span>
     </div>
-  `;
+  </div>
+`;
 
   masonry.appendChild(div);
+if (p.files && p.files.length > 1) {
 
+  const img = div.querySelector('img');
+
+  let current = 0;
+
+  setInterval(() => {
+
+    current = (current + 1) % p.files.length;
+
+    img.src = `images/${p.files[current]}`;
+
+  }, 2000);
+
+}
 });
 
 // ─── GENERATE PNG ARTWORKS ────────────────────────────────────────────────
@@ -1390,6 +1457,34 @@ document.getElementById('send-btn').addEventListener('click', () => {
   // Replace with your real form endpoint (e.g. Formspree, Netlify Forms) as needed
   alert(`Message received — thank you, ${name}. I'll be in touch soon.`);
 });
+const aboutImages = [
+  'images/sagar1.png',
+  'images/sagar2.png',
+  'images/sagar3.jpg'
+];
+
+let aboutIndex = 0;
+
+setInterval(() => {
+
+  const img = document.getElementById('about-photo');
+
+  if (!img) return;
+
+  img.style.opacity = '0';
+
+  setTimeout(() => {
+
+    aboutIndex =
+      (aboutIndex + 1) % aboutImages.length;
+
+    img.src = aboutImages[aboutIndex];
+
+    img.style.opacity = '1';
+
+  }, 300);
+
+}, 3000);
 </script>
 </body>
 </html>
