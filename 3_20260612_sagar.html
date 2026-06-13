@@ -74,7 +74,7 @@ nav.scrolled {
   position: relative; z-index: 1; min-height: 100vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: flex-start;
-  padding: 80px 10vw 3rem;
+  padding: 90px 10vw 3rem;
 }
 .hero-eyebrow {
   font-size: 0.68rem; letter-spacing: 0.3em; color: var(--gold);
@@ -107,7 +107,7 @@ nav.scrolled {
   opacity: 0; animation: fadeUp 1s 1.3s forwards;
 }
 .scroll-line {
-  width: 1px; height: 48px;
+  width: 2px; height: 48px;
   background: linear-gradient(to bottom, var(--gold), transparent);
   animation: pulse 2s infinite;
 }
@@ -1060,7 +1060,6 @@ document.querySelectorAll('.filter-row').forEach(g=>{
 });
 
 // ─── PHOTOGRAPHY ──────────────────────────────────────────
-// FIX: all paths are flat (no images/ prefix) — matches same-folder layout.
 // FIX: multi-image entries (lizard) now correctly use p.files[0] as the
 //      initial src, and the slideshow cycles through p.files, not p.file.
 const photos = [
@@ -1109,7 +1108,6 @@ photos.forEach(p=>{
     },2000);
   }
 });
-
 // ─── ART GRID ─────────────────────────────────────────────
 // FIX: flat filenames — no images/ prefix
 const artworks=[
@@ -1190,7 +1188,6 @@ document.getElementById('poem-list').querySelectorAll('li').forEach(li=>{
 });
 
 // ─── ABOUT PHOTO SLIDESHOW ────────────────────────────────
-// FIX: flat filenames (sagar1.png not images/sagar1.png)
 const aboutImages=['sagar1.png','sagar2.png','sagar3.jpg'];
 let aboutIndex=0;
 setInterval(()=>{
