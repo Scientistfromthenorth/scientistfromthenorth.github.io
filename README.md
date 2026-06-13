@@ -72,28 +72,28 @@ nav.scrolled {
   position: relative; z-index: 1; min-height: 100vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: flex-start;
-  padding: 80px 10vw 3rem;
+  padding: 30px 3vw 0.5rem;
 }
 .hero-eyebrow {
-  font-size: 2rem; letter-spacing: 0.5em; color: var(--gold);
+  font-size: 2rem; letter-spacing: 0.3em; color: var(--gold);
   text-transform: uppercase; margin-bottom: 1.6rem;
   opacity: 0; animation: fadeUp 1s 0.3s forwards;
 }
 .hero-name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(8rem, 15vw, 16rem);
+  font-size: clamp(3rem, 6vw, 8rem);
   font-weight: 300; line-height: 0.95; margin-bottom: 1.2rem;
   opacity: 0; animation: fadeUp 1s 0.5s forwards;
 }
 .hero-name em { font-style: italic; color: var(--gold); }
 .hero-roles {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(1rem, 3vw, 3rem);
   font-style: italic; color: var(--slate); margin-bottom: 2rem;
   opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
 .hero-statement {
-  max-width: 500px; font-size: 2rem; line-height: 2.5;
+  max-width: 100px; font-size: 2rem; line-height: 2.5;
   color: var(--text-dim); font-weight: 300;
   opacity: 0; animation: fadeUp 1s 0.9s forwards;
 }
