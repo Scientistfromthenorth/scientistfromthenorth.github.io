@@ -1239,7 +1239,7 @@ photos.forEach(p => {
 // ─── GENERATE JPG ARTWORKS ────────────────────────────────────────────────
 const artworks = [
   {
-    file: 'girl.ppg',
+    file: 'girl.png',
     title: 'Girl's Portrait Red',
     meta: 'Acrylic on canvas · 90×120 cm · 2023'
   },
@@ -1249,12 +1249,12 @@ const artworks = [
     meta: 'Acrylic on canvas · 90×120 cm · 2022'
   },
   {
-    file: 'wounded.ppg',
+    file: 'wounded.png',
     title: 'Wounded Rhino',
     meta: 'Mixed media · 100×100 cm · 2024'
   },
   {
-    file: 'lakhey.ppg',
+    file: 'lakhey.png',
     title: 'LAKHEY- The Demigod',
     meta: 'Acrylic on canvas · 60×80 cm · 2023'
   }
