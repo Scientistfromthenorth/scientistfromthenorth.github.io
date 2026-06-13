@@ -1236,11 +1236,11 @@ photos.forEach(p => {
 
 });
 
-// ─── GENERATE JPG ARTWORKS ────────────────────────────────────────────────
+// ─── GENERATE PNG ARTWORKS ────────────────────────────────────────────────
 const artworks = [
   {
     file: 'girl.png',
-    title: 'Girl's Portrait Red',
+    title: 'Girl Portrait Red',
     meta: 'Acrylic on canvas · 90×120 cm · 2023'
   },
   {
@@ -1255,7 +1255,7 @@ const artworks = [
   },
   {
     file: 'lakhey.png',
-    title: 'LAKHEY- The Demigod',
+    title: 'LAKHEY-The Demigod',
     meta: 'Acrylic on canvas · 60×80 cm · 2023'
   }
 ];
@@ -1345,7 +1345,7 @@ No longer turning to one — being one…`
     b: `[Full text to be added]`
   },
   {
-    t: 'Girl's portrait red',
+    t: 'Girl portrait red',
     d: 'Acrylic Painting · 2023',
     b: `[Full text to be added]`
   },
