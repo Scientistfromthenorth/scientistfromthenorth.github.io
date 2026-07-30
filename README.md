@@ -42,6 +42,35 @@ body {
   position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.5;
 }
 
+/* FLOATING PHOTO FIELD — light mode only */
+.photo-field {
+  position: fixed; inset: 0; z-index: 0; overflow: hidden;
+  pointer-events: none;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+[data-theme="light"] .photo-field { opacity: 1; }
+.photo-field img {
+  position: absolute; top: 0; left: 0;
+  width: var(--pf-size, 220px); height: auto;
+  border-radius: 3px;
+  box-shadow: 0 20px 50px rgba(30,25,15,0.18);
+  filter: sepia(0.12) saturate(0.85) brightness(1.02);
+  opacity: 0;
+  animation: pfDrift var(--pf-dur, 46s) linear infinite;
+  animation-delay: var(--pf-delay, 0s);
+  animation-play-state: paused;
+  will-change: transform, opacity;
+}
+[data-theme="light"] .photo-field img { animation-play-state: running; }
+
+@keyframes pfDrift {
+  0%   { transform: translate(var(--x1), var(--y1)) rotate(var(--r1)); opacity: 0; }
+  12%  { opacity: var(--pf-op, 0.3); }
+  50%  { transform: translate(var(--x2), var(--y2)) rotate(var(--r2)); opacity: var(--pf-op, 0.3); }
+  88%  { opacity: 0; }
+  100% { transform: translate(var(--x3), var(--y3)) rotate(var(--r3)); opacity: 0; }
+}
+
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -533,6 +562,7 @@ nav.scrolled {
 <body>
 
 <canvas id="particle-canvas"></canvas>
+<div class="photo-field" id="photo-field"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1199,7 +1229,45 @@ artworks.forEach(a=>{
   artGrid.appendChild(card);
 });
 
-// ─── LIGHTBOX CLOSE ───────────────────────────────────────
+// ─── FLOATING PHOTO FIELD (light mode ambient drift) ──────
+// Flatten every image used in the Photography chapter — including
+// each frame of multi-image entries like the lizard sequence.
+const allPhotoFiles = photos.flatMap(p => p.files ? p.files : [p.file]);
+
+const field = document.getElementById('photo-field');
+function rand(min, max) { return Math.random() * (max - min) + min; }
+
+allPhotoFiles.forEach((file, i) => {
+  const img = document.createElement('img');
+  img.src = file;
+  img.loading = 'lazy';
+  img.alt = '';
+
+  const vw = () => window.innerWidth, vh = () => window.innerHeight;
+  const size = rand(160, 260);
+  const dur  = rand(38, 68);
+  const delay = -rand(0, dur); // negative delay staggers start point mid-cycle
+  const op   = rand(0.18, 0.34);
+
+  // three drift waypoints across the viewport, gentle rotation
+  const x1 = rand(-0.1, 1.05) * vw(), y1 = rand(-0.1, 1.05) * vh();
+  const x2 = rand(-0.1, 1.05) * vw(), y2 = rand(-0.1, 1.05) * vh();
+  const x3 = rand(-0.1, 1.05) * vw(), y3 = rand(-0.1, 1.05) * vh();
+  const r1 = rand(-8, 8), r2 = rand(-6, 6), r3 = rand(-8, 8);
+
+  img.style.setProperty('--pf-size', `${size}px`);
+  img.style.setProperty('--pf-dur', `${dur}s`);
+  img.style.setProperty('--pf-delay', `${delay}s`);
+  img.style.setProperty('--pf-op', op);
+  img.style.setProperty('--x1', `${x1}px`); img.style.setProperty('--y1', `${y1}px`);
+  img.style.setProperty('--x2', `${x2}px`); img.style.setProperty('--y2', `${y2}px`);
+  img.style.setProperty('--x3', `${x3}px`); img.style.setProperty('--y3', `${y3}px`);
+  img.style.setProperty('--r1', `${r1}deg`); img.style.setProperty('--r2', `${r2}deg`); img.style.setProperty('--r3', `${r3}deg`);
+
+  field.appendChild(img);
+});
+
+
 document.getElementById('lb-close').addEventListener('click',()=>document.getElementById('lb').classList.remove('open'));
 document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open');});
 
