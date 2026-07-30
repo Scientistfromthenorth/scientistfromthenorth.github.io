@@ -1240,7 +1240,7 @@ const pfImgs = allPhotoFiles.map(file => {
   img.src = file;
   img.loading = 'lazy';
   img.alt = '';
-  img.style.setProperty('--pf-op', rand(0.12, 0.2).toFixed(2));
+  img.style.setProperty('--pf-op', rand(0.2, 0.4).toFixed(2));
   field.appendChild(img);
   return img;
 });
