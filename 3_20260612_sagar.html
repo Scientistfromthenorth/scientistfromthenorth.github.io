@@ -43,26 +43,29 @@ body {
 }
 
 /* AMBIENT PHOTO SLIDESHOW — light mode only, one image at a time */
-.photo-slideshow {
+.photo-field {
   position: fixed; inset: 0; z-index: 0; overflow: hidden;
   pointer-events: none;
-  opacity: 0; transition: opacity 1.5s ease;
+  opacity: 0; transition: opacity 1.2s ease;
 }
-[data-theme="light"] .photo-slideshow { opacity: 1; }
-.photo-slideshow img {
+[data-theme="light"] .photo-field { opacity: 1; }
+.photo-field::after {
+  /* vignette so type stays legible over whichever image is showing */
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 30%, var(--bg) 105%);
+}
+.photo-field img {
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover;
-  opacity: 0; transform: scale(1.04);
-  filter: sepia(0.1) saturate(0.82) brightness(1.03);
-  transition: opacity 3.5s ease, transform 11s ease-out;
+  filter: sepia(0.12) saturate(0.8) brightness(1.02);
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 3s ease, transform 9s ease;
+  will-change: opacity, transform;
 }
-.photo-slideshow img.active {
-  opacity: 0.2;
-  transform: scale(1.12);
-}
-.photo-slideshow::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, var(--bg) 0%, transparent 20%, transparent 75%, var(--bg) 100%);
+.photo-field img.pf-active {
+  opacity: var(--pf-op, 0.16);
+  transform: scale(1);
 }
 
 /* NAV */
@@ -1223,7 +1226,7 @@ artworks.forEach(a=>{
   artGrid.appendChild(card);
 });
 
-// ─── FLOATING PHOTO FIELD (light mode ambient drift) ──────
+// ─── AMBIENT PHOTO SLIDESHOW (light mode, one image at a time) ──
 // Flatten every image used in the Photography chapter — including
 // each frame of multi-image entries like the lizard sequence.
 const allPhotoFiles = photos.flatMap(p => p.files ? p.files : [p.file]);
@@ -1231,35 +1234,27 @@ const allPhotoFiles = photos.flatMap(p => p.files ? p.files : [p.file]);
 const field = document.getElementById('photo-field');
 function rand(min, max) { return Math.random() * (max - min) + min; }
 
-allPhotoFiles.forEach((file, i) => {
+const pfImgs = allPhotoFiles.map(file => {
   const img = document.createElement('img');
   img.src = file;
   img.loading = 'lazy';
   img.alt = '';
-
-  const vw = () => window.innerWidth, vh = () => window.innerHeight;
-  const size = rand(160, 260);
-  const dur  = rand(38, 68);
-  const delay = -rand(0, dur); // negative delay staggers start point mid-cycle
-  const op   = rand(0.18, 0.34);
-
-  // three drift waypoints across the viewport, gentle rotation
-  const x1 = rand(-0.1, 1.05) * vw(), y1 = rand(-0.1, 1.05) * vh();
-  const x2 = rand(-0.1, 1.05) * vw(), y2 = rand(-0.1, 1.05) * vh();
-  const x3 = rand(-0.1, 1.05) * vw(), y3 = rand(-0.1, 1.05) * vh();
-  const r1 = rand(-8, 8), r2 = rand(-6, 6), r3 = rand(-8, 8);
-
-  img.style.setProperty('--pf-size', `${size}px`);
-  img.style.setProperty('--pf-dur', `${dur}s`);
-  img.style.setProperty('--pf-delay', `${delay}s`);
-  img.style.setProperty('--pf-op', op);
-  img.style.setProperty('--x1', `${x1}px`); img.style.setProperty('--y1', `${y1}px`);
-  img.style.setProperty('--x2', `${x2}px`); img.style.setProperty('--y2', `${y2}px`);
-  img.style.setProperty('--x3', `${x3}px`); img.style.setProperty('--y3', `${y3}px`);
-  img.style.setProperty('--r1', `${r1}deg`); img.style.setProperty('--r2', `${r2}deg`); img.style.setProperty('--r3', `${r3}deg`);
-
+  img.style.setProperty('--pf-op', rand(0.12, 0.2).toFixed(2));
   field.appendChild(img);
+  return img;
 });
+
+if (pfImgs.length) {
+  let pfIndex = 0;
+  pfImgs[pfIndex].classList.add('pf-active');
+
+  setInterval(() => {
+    const prev = pfIndex;
+    pfIndex = (pfIndex + 1) % pfImgs.length;
+    pfImgs[pfIndex].classList.add('pf-active');
+    pfImgs[prev].classList.remove('pf-active');
+  }, 8000); // each photo holds for 8s, crossfading via the CSS transition
+}
 
 
 document.getElementById('lb-close').addEventListener('click',()=>document.getElementById('lb').classList.remove('open'));
@@ -1489,6 +1484,7 @@ setInterval(()=>{
     img.style.opacity='1';
   },1000);   // wait for fade-out before swapping src
 },6000);
+
 // ─── CONTACT FORM ─────────────────────────────────────────
 document.getElementById('send-btn').addEventListener('click',()=>{
   const name=document.querySelector('#ov-contact input[type="text"]').value.trim();
