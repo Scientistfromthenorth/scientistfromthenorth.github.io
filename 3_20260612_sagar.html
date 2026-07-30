@@ -42,33 +42,27 @@ body {
   position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.5;
 }
 
-/* FLOATING PHOTO FIELD — light mode only */
-.photo-field {
+/* AMBIENT PHOTO SLIDESHOW — light mode only, one image at a time */
+.photo-slideshow {
   position: fixed; inset: 0; z-index: 0; overflow: hidden;
   pointer-events: none;
-  opacity: 0; transition: opacity 1.2s ease;
+  opacity: 0; transition: opacity 1.5s ease;
 }
-[data-theme="light"] .photo-field { opacity: 1; }
-.photo-field img {
-  position: absolute; top: 0; left: 0;
-  width: var(--pf-size, 220px); height: auto;
-  border-radius: 3px;
-  box-shadow: 0 20px 50px rgba(30,25,15,0.18);
-  filter: sepia(0.12) saturate(0.85) brightness(1.02);
-  opacity: 0;
-  animation: pfDrift var(--pf-dur, 46s) linear infinite;
-  animation-delay: var(--pf-delay, 0s);
-  animation-play-state: paused;
-  will-change: transform, opacity;
+[data-theme="light"] .photo-slideshow { opacity: 1; }
+.photo-slideshow img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.04);
+  filter: sepia(0.1) saturate(0.82) brightness(1.03);
+  transition: opacity 3.5s ease, transform 11s ease-out;
 }
-[data-theme="light"] .photo-field img { animation-play-state: running; }
-
-@keyframes pfDrift {
-  0%   { transform: translate(var(--x1), var(--y1)) rotate(var(--r1)); opacity: 0; }
-  12%  { opacity: var(--pf-op, 0.3); }
-  50%  { transform: translate(var(--x2), var(--y2)) rotate(var(--r2)); opacity: var(--pf-op, 0.3); }
-  88%  { opacity: 0; }
-  100% { transform: translate(var(--x3), var(--y3)) rotate(var(--r3)); opacity: 0; }
+.photo-slideshow img.active {
+  opacity: 0.2;
+  transform: scale(1.12);
+}
+.photo-slideshow::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, transparent 20%, transparent 75%, var(--bg) 100%);
 }
 
 /* NAV */
