@@ -168,13 +168,42 @@ nav.scrolled {
   background: var(--gold); border-color: var(--gold);
   color: #0D0D12; transform: rotate(45deg);
 }
-.card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.7rem; }
+.card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.7rem; z-index: 2; }
 .card-num { font-size: 0.58rem; letter-spacing: 0.26em; color: var(--gold); opacity: 0.7; margin-bottom: 0.55rem; }
 .card-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 1.55rem; font-weight: 500; line-height: 1.2; margin-bottom: 0.45rem;
 }
 .card-desc { font-size: 0.76rem; color: var(--text-dim); line-height: 1.65; font-weight: 300; max-width: 250px; }
+
+/* CARD MEDIA PREVIEWS */
+.card-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.card-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.55; filter: saturate(0.75) brightness(0.9);
+  transition: transform 0.6s cubic-bezier(.25,.8,.25,1), opacity 0.4s, filter 0.4s;
+}
+.card:hover .card-media img { transform: scale(1.08); opacity: 0.8; filter: saturate(1) brightness(1); }
+
+.card-media iframe {
+  width: 1440px; height: 960px; border: 0;
+  transform-origin: top left; transform: scale(0.216);
+  pointer-events: none;
+  opacity: 0.45; filter: grayscale(0.25) saturate(0.85);
+  transition: opacity 0.4s, filter 0.4s;
+}
+.card:hover .card-media iframe { opacity: 0.7; filter: grayscale(0) saturate(1); }
+
+.card-text-bg {
+  position: absolute; inset: 0; z-index: 0; padding: 2.2rem 1.8rem;
+  display: flex; align-items: center;
+  font-size: 0.8rem; line-height: 1.9;
+  color: var(--text-dim); opacity: 0.28; white-space: pre-wrap; overflow: hidden;
+}
+.card-text-bg.serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic; font-size: 1.05rem; line-height: 2;
+}
 
 /* OVERLAYS */
 .overlay {
@@ -526,6 +555,14 @@ nav.scrolled {
   <div class="cards-track" id="track">
 
     <div class="card c-research" data-ov="ov-research">
+      <div class="card-text-bg">Immunology · Molecular Biology · Proteomics
+Immuno-Peptidomics · Computational Biology
+Large Language Models · Artificial Intelligence
+
+PhD Student — Monash University
+Research Associate — Yale University
+M.Sc. Cellular and Molecular Biology
+BSc Medical Biochemistry</div>
       <div class="card-strip"></div><div class="card-glyph">R</div>
       <div class="card-grad"></div><div class="card-arrow">↗</div>
       <div class="card-content">
@@ -536,6 +573,17 @@ nav.scrolled {
     </div>
 
     <div class="card c-pubs" data-ov="ov-pubs">
+      <div class="card-text-bg">Nature · 2025
+The subfornical organ is a nucleus for
+gut-derived T cells that regulate behaviour
+
+Science Advances · 2025
+SARS-CoV-2 induces Alzheimer's disease–
+related amyloid-β pathology
+
+bioRxiv · 2026
+Mechanobiological Specialization of
+Choroid Plexus Macrophages</div>
       <div class="card-strip"></div><div class="card-glyph">P</div>
       <div class="card-grad"></div><div class="card-arrow">↗</div>
       <div class="card-content">
@@ -546,6 +594,7 @@ nav.scrolled {
     </div>
 
     <div class="card c-photo" data-ov="ov-photo">
+      <div class="card-media"><img src="coexistence.jpg" alt="" loading="lazy"></div>
       <div class="card-strip"></div><div class="card-glyph">L</div>
       <div class="card-grad"></div><div class="card-arrow">↗</div>
       <div class="card-content">
@@ -556,6 +605,7 @@ nav.scrolled {
     </div>
 
     <div class="card c-art" data-ov="ov-art">
+      <div class="card-media"><img src="lakhey.png" alt="" loading="lazy"></div>
       <div class="card-strip"></div><div class="card-glyph">A</div>
       <div class="card-grad"></div><div class="card-arrow">↗</div>
       <div class="card-content">
@@ -566,6 +616,17 @@ nav.scrolled {
     </div>
 
     <div class="card c-writing" data-ov="ov-writing">
+      <div class="card-text-bg serif">A dead sunflower is a dead flower
+Dead,
+Meaning- no life, no ambition,
+No need to seek the sun,
+Let alone turn around to.
+Dead,
+.
+.
+.
+As in useless, no commotion,
+Silent like the sick one,</div>
       <div class="card-strip"></div><div class="card-glyph">W</div>
       <div class="card-grad"></div><div class="card-arrow">↗</div>
       <div class="card-content">
@@ -576,6 +637,7 @@ nav.scrolled {
     </div>
 
     <div class="card c-projects" data-ov="ov-projects">
+      <div class="card-media"><iframe src="https://scientistfromthenorth.github.io/spleen-atlas.html/" loading="lazy" title="Spleen Atlas preview"></iframe></div>
       <div class="card-strip"></div><div class="card-glyph">Σ</div>
       <div class="card-grad"></div><div class="card-arrow">↗</div>
       <div class="card-content">
@@ -586,6 +648,7 @@ nav.scrolled {
     </div>
 
     <div class="card c-about" data-ov="ov-about">
+      <div class="card-media"><img src="sagar1.png" alt="" loading="lazy"></div>
       <div class="card-strip"></div><div class="card-glyph">∞</div>
       <div class="card-grad"></div><div class="card-arrow">↗</div>
       <div class="card-content">
