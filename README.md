@@ -918,18 +918,18 @@ No longer turning to one — being one…</p>
   <div class="ov-body">
     <div class="proj-grid">
       <div class="proj">
-        <p class="proj-tag">Computational Biology</p>
-        <h3 class="proj-title">ImmunoPepMap</h3>
-        <p class="proj-desc">A pipeline for high-throughput immunopeptidomics data analysis — integrating mass spectrometry outputs with MHC-binding prediction models to identify novel antigen candidates in autoimmune contexts.</p>
-        <div class="pills"><span class="pill">Python</span><span class="pill">NetMHCpan</span><span class="pill">Pandas</span><span class="pill">Snakemake</span></div>
-        <div class="proj-links"><a class="plink" href="#" target="_blank">GitHub ↗</a><a class="plink" href="#" target="_blank">Preprint ↗</a></div>
+        <p class="proj-tag">Spatial Immunopeptidomics</p>
+        <h3 class="proj-title">Spleen Atlas</h3>
+        <p class="proj-desc">An interactive spatial atlas of the MHC class I immunopeptidome across laser-microdissected regions of a C57BL/6 mouse spleen — white pulp, marginal zone and red pulp — pairing H&amp;E histology with peptide length, binding-affinity and sequence-motif profiles region by region.</p>
+        <div class="pills"><span class="pill">Immunopeptidomics</span><span class="pill">MHC-I</span><span class="pill">Spatial Omics</span><span class="pill">Histology</span></div>
+        <div class="proj-links"><a class="plink" href="https://scientistfromthenorth.github.io/spleen-atlas.html/" target="_blank">Live Atlas ↗</a></div>
       </div>
       <div class="proj">
-        <p class="proj-tag">Art × Science</p>
-        <h3 class="proj-title">Lady and the Rooster</h3>
-        <p class="proj-desc">An interesting piece of art — acrylic on canvas, where a lady is carrying a rooster with love, compassion and authority. Emotions reveal the true intention.</p>
-        <div class="pills"><span class="pill">p5.js</span><span class="pill">WebGL</span><span class="pill">Three.js</span></div>
-        <div class="proj-links"><a class="plink" href="#" target="_blank">Live Demo ↗</a><a class="plink" href="#" target="_blank">GitHub ↗</a></div>
+        <p class="proj-tag">Immunopeptidomics · Autoimmune Disease</p>
+        <h3 class="proj-title">DOME</h3>
+        <p class="proj-desc">Disease-associated Omnibus of MHC-I Epitopes — an integrated psoriasis ligandome atlas, harmonizing seven independent HLA-C and MHC-I immunopeptidomics studies into one searchable peptide-level dataset, with binding-evidence breakdowns, chemistry-coloured motif logos, and a peptide explorer with per-length and per-source Excel export.</p>
+        <div class="pills"><span class="pill">HLA-C</span><span class="pill">MHC-I</span><span class="pill">Immunopeptidomics</span><span class="pill">Data Viz</span></div>
+        <div class="proj-links"><a class="plink" href="https://scientistfromthenorth.github.io/Disease-associated-Omnibus-of-MHC-I-Epitopes-DOME-/" target="_blank">Live Atlas ↗</a></div>
       </div>
       <div class="proj">
         <p class="proj-tag">Neuroinflammation</p>
@@ -938,6 +938,7 @@ No longer turning to one — being one…</p>
         <div class="pills"><span class="pill">R / Seurat</span><span class="pill">Shiny</span><span class="pill">UMAP</span></div>
         <div class="proj-links"><a class="plink" href="#" target="_blank">App ↗</a><a class="plink" href="#" target="_blank">Data ↗</a></div>
       </div>
+
       <div class="proj">
         <p class="proj-tag">Photography</p>
         <h3 class="proj-title">Light Journals</h3>
